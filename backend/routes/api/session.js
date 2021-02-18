@@ -27,15 +27,13 @@ router.post(
   })
 );
 
+router.delete("/", (req, res) => {
+  res.clearCookie("token");
+  return res.json({ message: "success" });
+});
+
 module.exports = router;
 
 /*
-fetch('/api/session', {
-  method: 'POST',
-  headers: {
-    "Content-Type": "application/json",
-    "XSRF-TOKEN": `Wgqwkoty-TPr-Z7vOXhq2elq3y6hd7dP9__k`
-  },
-  body: JSON.stringify({ credential: 'Demo-lition', password: 'password' })
-}).then(res => res.json()).then(data => console.log(data));
+
 */
