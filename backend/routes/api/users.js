@@ -30,8 +30,8 @@ fetch('/api/users',{
     'XSRF-TOKEN': `LaGt37t2-J5GZBvYk-wVneKxXWAs5EjbAdEM`
   },
   body: JSON.stringify({
-    email: 'spidey@spider.manss',
-    username: 'Spideyss',
+    email: 'spidey@spider.mansss',
+    username: 'Spideysss',
     password: 'password'
   })
 }).then(res=> res.json()).then(data=> console.log(data))
