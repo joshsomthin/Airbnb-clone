@@ -44,9 +44,8 @@ export const signup = ({ username, email, password }) => async (dispatch) => {
   });
   if (!response.ok) throw response;
   const data = await response.json();
-  console.log(data);
   dispatch(setUser(data.user));
-  return data;
+  return response;
 };
 
 const initialState = {
