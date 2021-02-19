@@ -1,0 +1,11 @@
+form {
+  display: block;
+  width: 200px;
+  margin: 0.5em;
+}
+input {
+  display: flexbox;
+}
+ul {
+  color: red;
+}
