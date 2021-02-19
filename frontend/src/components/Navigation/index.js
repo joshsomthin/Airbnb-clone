@@ -9,21 +9,12 @@ function Navigation() {
   const history = useHistory();
   const sessionState = useSelector((state) => state.session.user);
 
-  const onLogoutClick = async () => {
-    let logingOut = await dispatch(logout());
-    if (logingOut) {
-      history.push(`/`);
-    }
-  };
   return (
     <div>
       <ul>
         <Link to="/">Home</Link>
         {sessionState ? (
           <>
-            <Link to="/logout" onClick={onLogoutClick}>
-              Logout
-            </Link>
             <ProfileButton />
           </>
         ) : (
