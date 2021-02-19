@@ -1,5 +1,6 @@
 import { Switch, Route } from "react-router-dom";
 import LoginFormPage from "./components/LoginFormPage";
+import Navigation from "./components/Navigation";
 import { restoreUser } from "./store/session";
 import { useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
@@ -13,14 +14,18 @@ function App() {
     dispatch(restoreUser()).then(() => setIsLoaded(true));
   }, [dispatch]);
   return (
-    <Switch>
-      <Route path="/login">
-        <LoginFormPage />
-      </Route>
-      <Route path="/signup">
-        <SignupFormPage />
-      </Route>
-    </Switch>
+    <>
+      <Navigation />
+      <Switch>
+        <Route exact path="/"></Route>
+        <Route path="/login">
+          <LoginFormPage />
+        </Route>
+        <Route path="/signup">
+          <SignupFormPage />
+        </Route>
+      </Switch>
+    </>
   );
 }
 

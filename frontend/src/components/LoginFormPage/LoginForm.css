@@ -1,4 +1,4 @@
-div {
+.login-div {
   display: flex;
   background-color: skyblue;
   justify-content: center;
@@ -6,7 +6,7 @@ div {
   width: auto;
   height: 100vh;
 }
-.form {
+.login-form {
   margin: 0.5em;
   background-color: rgb(216, 113, 40);
   justify-items: left;

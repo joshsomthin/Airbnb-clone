@@ -24,8 +24,8 @@ const LoginFormPage = () => {
     });
   };
   return (
-    <div>
-      <form onSubmit={submitLogin} className="form">
+    <div className="login-div">
+      <form className="login-form" onSubmit={submitLogin}>
         <ul>
           {errors.map((error, idx) => (
             <li key={idx}>{error}</li>

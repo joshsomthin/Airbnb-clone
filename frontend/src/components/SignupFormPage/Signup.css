@@ -1,4 +1,4 @@
-div {
+.logout-div {
   display: flex;
   background-color: skyblue;
   justify-content: center;
@@ -6,7 +6,7 @@ div {
   width: auto;
   height: 100vh;
 }
-form {
+.logout-form {
   margin: 0.5em;
   display: flex;
   background-color: rgb(216, 113, 40);
