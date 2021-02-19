@@ -44,7 +44,7 @@ const LoginFormPage = () => {
         <label>
           Password
           <input
-            type="password"
+            type="text"
             placeholder="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
