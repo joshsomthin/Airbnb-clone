@@ -42,31 +42,3 @@ router.post(
 );
 
 module.exports = router;
-
-/*
-fetch('/api/users',{
-  method: 'POST',
-  headers: {
-    'Content-type': 'application/json',
-    'XSRF-TOKEN': `LaGt37t2-J5GZBvYk-wVneKxXWAs5EjbAdEM`
-  },
-  body: JSON.stringify({
-    email: 'spidey@spider.mansss',
-    username: 'Spideysss',
-    password: 'password'
-  })
-}).then(res=> res.json()).then(data=> console.log(data))
-
-fetch('/api/users', {
-  method: 'POST',
-  headers: {
-    "Content-Type": "application/json",
-    "XSRF-TOKEN": `<value of XSRF-TOKEN cookie>`
-  },
-  body: JSON.stringify({
-    email: 'nerd@ners.gov',
-    username: 'Spideys',
-    password: 'password'
-  })
-}).then(res => res.json()).then(data => console.log(data));
-*/
