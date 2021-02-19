@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import { signup } from "../../store/session";
 import { Redirect } from "react-router-dom";
+import "./Signup.css";
 
 const SignupFormPage = () => {
   const [username, setUsername] = useState("");
@@ -41,32 +42,32 @@ const SignupFormPage = () => {
           ))}
         </ul>
         <label>
-          Username:
           <input
+            placeholder="Username:"
             type="text"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
           />
         </label>
         <label>
-          Email:
           <input
+            placeholder="Ex: john@Doe.com"
             type="text"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
         </label>
         <label>
-          Password:
           <input
+            placeholder="Password:"
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
         </label>
         <label>
-          Confirm Password:
           <input
+            placeholder="Confirm Password:"
             type="password"
             value={confirmPassword}
             onChange={(e) => setconfirmPassword(e.target.value)}

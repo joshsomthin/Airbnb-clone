@@ -1,11 +1,19 @@
-form {
-  display: block;
-  width: 200px;
+div {
+  display: flex;
+  background-color: skyblue;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+  height: 100vh;
+}
+.form {
   margin: 0.5em;
+  background-color: rgb(216, 113, 40);
+  justify-items: left;
+  width: 570px;
+  height: 400px;
 }
-input {
-  display: flexbox;
-}
+
 ul {
   color: red;
 }

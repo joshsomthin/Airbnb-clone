@@ -12,6 +12,16 @@ const deleteSession = () => ({
   type: REMOVE_USER,
 });
 
+export const logout = () => async (dispatch) => {
+  const response = await csrfFetch("/api/session", {
+    method: "DELETE",
+  });
+  if (!response.ok) throw response;
+  const data = await response.json();
+  dispatch(deleteSession());
+  return data;
+};
+
 export const login = ({ credential, password }) => async (dispatch) => {
   const response = await csrfFetch("/api/session", {
     method: "POST",
