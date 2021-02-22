@@ -13,8 +13,9 @@
   align-items: center;
   flex-wrap: wrap;
   width: 570px;
-  height: 400px;
+  height: 475px;
   font-size: 20px;
+  border-radius: 20px;
 }
 
 input {

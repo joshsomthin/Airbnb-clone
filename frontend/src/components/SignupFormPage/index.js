@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import { signup } from "../../store/session";
-import { Redirect } from "react-router-dom";
+import { Redirect, NavLink } from "react-router-dom";
 import "./Signup.css";
 
 const SignupFormPage = () => {
@@ -36,7 +36,6 @@ const SignupFormPage = () => {
   return (
     <div className="logout-div">
       <form className="logout-form" onSubmit={handleSubmit}>
-        <div></div>
         <div className="inputbox">
           <h2>Signup</h2>
           <ul>
@@ -78,6 +77,9 @@ const SignupFormPage = () => {
           </label>
           <button type="submit">Register</button>
         </div>
+        <NavLink to="/login" style={{ padding: "20px" }}>
+          Have an account?
+        </NavLink>
       </form>
     </div>
   );

@@ -8,8 +8,26 @@
 }
 .login-form {
   margin: 0.5em;
+  display: flex;
   background-color: rgb(216, 113, 40);
-  justify-items: left;
+  align-items: center;
+  flex-wrap: wrap;
   width: 570px;
   height: 400px;
+  font-size: 20px;
+  border-radius: 20px;
+}
+
+input {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+
+.inputbox {
+  text-align: center;
+  margin: 30px;
+  align-items: center;
+  justify-content: flex-start;
 }
