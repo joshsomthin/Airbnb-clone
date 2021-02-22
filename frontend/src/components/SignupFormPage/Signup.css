@@ -23,3 +23,8 @@ input {
   margin: 8px 0;
   box-sizing: border-box;
 }
+
+.inputbox {
+  margin: 30px;
+  align-items: center;
+}

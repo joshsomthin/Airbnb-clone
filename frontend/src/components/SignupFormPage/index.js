@@ -36,44 +36,48 @@ const SignupFormPage = () => {
   return (
     <div className="logout-div">
       <form className="logout-form" onSubmit={handleSubmit}>
-        <ul>
-          {errors.map((error, idx) => (
-            <li key={idx}>{error}</li>
-          ))}
-        </ul>
-        <label>
-          <input
-            placeholder="Username:"
-            type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          />
-        </label>
-        <label>
-          <input
-            placeholder="Ex: john@Doe.com"
-            type="text"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </label>
-        <label>
-          <input
-            placeholder="Password:"
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </label>
-        <label>
-          <input
-            placeholder="Confirm Password:"
-            type="password"
-            value={confirmPassword}
-            onChange={(e) => setconfirmPassword(e.target.value)}
-          />
-        </label>
-        <button type="submit">Register</button>
+        <div></div>
+        <div className="inputbox">
+          <h2>Signup</h2>
+          <ul>
+            {errors.map((error, idx) => (
+              <li key={idx}>{error}</li>
+            ))}
+          </ul>
+          <label>
+            <input
+              placeholder="Username:"
+              type="text"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+            />
+          </label>
+          <label>
+            <input
+              placeholder="Ex: john@Doe.com"
+              type="text"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </label>
+          <label>
+            <input
+              placeholder="Password:"
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </label>
+          <label>
+            <input
+              placeholder="Confirm Password:"
+              type="password"
+              value={confirmPassword}
+              onChange={(e) => setconfirmPassword(e.target.value)}
+            />
+          </label>
+          <button type="submit">Register</button>
+        </div>
       </form>
     </div>
   );
