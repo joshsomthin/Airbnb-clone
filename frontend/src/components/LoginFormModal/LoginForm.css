@@ -8,6 +8,10 @@
   font-size: 20px;
   border-radius: 20px;
 }
+.errors {
+  color: red;
+  list-style-type: none;
+}
 
 input {
   width: 100%;
@@ -15,8 +19,7 @@ input {
   margin: 8px 0;
   box-sizing: border-box;
 }
-
-.inputbox {
+s .inputbox {
   text-align: center;
   margin: 30px;
   align-items: center;
