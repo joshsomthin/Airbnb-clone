@@ -1,19 +1,10 @@
-.logout-div {
-  display: flex;
-  background-color: skyblue;
-  justify-content: center;
-  align-items: center;
-  width: auto;
-  height: 100vh;
-}
 .logout-form {
   margin: 0.5em;
   display: flex;
-  background-color: rgb(216, 113, 40);
   align-items: center;
   flex-wrap: wrap;
-  width: 570px;
-  height: 475px;
+  width: 600px;
+  height: auto;
   font-size: 20px;
   border-radius: 20px;
 }

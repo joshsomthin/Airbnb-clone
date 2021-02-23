@@ -19,6 +19,12 @@ const validateSignup = [
     .isLength({ min: 4 })
     .withMessage("Please provide a username with at least 4 characters."),
   check("username").not().isEmail().withMessage("Username cannot be an email."),
+  check("firstName")
+    .exists({ checkFalsy: true })
+    .withMessage("You must provide a first name."),
+  check("lastName")
+    .exists({ checkFalsy: true })
+    .withMessage("You must provide a last name."),
   check("password")
     .exists({ checkFalsy: true })
     .isLength({ min: 6 })
@@ -30,13 +36,22 @@ router.post(
   "/",
   validateSignup,
   asnycHandler(async (req, res) => {
-    const { email, password, username } = req.body;
-    const user = await User.signup({
+    const {
       email,
-      username,
       password,
+      username,
       firstName,
       lastName,
+      profilePic,
+    } = req.body;
+    console.log(req.body);
+    const user = await User.signup({
+      username,
+      email,
+      firstName,
+      lastName,
+      profilePic,
+      password,
     });
 
     await setTokenCookie(res, user);
