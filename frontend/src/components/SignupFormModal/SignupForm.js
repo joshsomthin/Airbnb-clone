@@ -103,9 +103,12 @@ const SignupForm = () => {
               onChange={(e) => setconfirmPassword(e.target.value)}
             />
           </label>
-          <button type="submit">Register</button>
+          <button type="submit" className="register-button">
+            Register
+          </button>
         </div>
         <a
+          className="modal-switch"
           href=""
           style={{ paddingLeft: "30px" }}
           onClick={(e) => {

@@ -57,16 +57,17 @@ function LoginForm() {
           onChange={(e) => setPassword(e.target.value)}
           required
         />
-        <button type="submit" style={{ margin: "10px" }}>
+        <button className="submit-button" type="submit">
           Log In
         </button>
-        <button type="button" style={{ margin: "10px" }} onClick={loginDemo}>
+        <button className="submit-button" type="button" onClick={loginDemo}>
           Demo User
         </button>
       </div>
       <a
+        className="modal-switch"
         href=""
-        style={{ padding: "30px" }}
+        style={{ paddingLeft: "30px" }}
         onClick={(e) => {
           e.preventDefault();
           setSwitchModal(true);
