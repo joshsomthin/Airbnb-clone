@@ -4,7 +4,7 @@ import { signup } from "../../store/session";
 import { Redirect, NavLink } from "react-router-dom";
 import "./Signup.css";
 
-const SignupFormPage = () => {
+const SignupForm = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -85,4 +85,4 @@ const SignupFormPage = () => {
   );
 };
 
-export default SignupFormPage;
+export default SignupForm;
