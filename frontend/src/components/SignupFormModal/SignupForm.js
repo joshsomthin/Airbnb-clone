@@ -2,13 +2,17 @@ import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import { signup } from "../../store/session";
 import { Redirect, NavLink } from "react-router-dom";
+import LoginForm from "../LoginFormModal/LoginForm";
 import "./Signup.css";
 
 const SignupForm = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setconfirmPassword] = useState("");
+  const [switchModal, setSwitchModal] = useState(false);
   const [errors, setErrors] = useState([]);
   const sessionUser = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
@@ -19,21 +23,29 @@ const SignupForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log(username, email, firstName, lastName, password);
     if (confirmPassword === password) {
       setErrors([]);
-      return dispatch(signup({ username, email, password })).catch(
-        async (res) => {
-          const data = await res.json();
-          if (data && data.errors) setErrors(data.errors);
-        }
-      );
+      return dispatch(
+        signup({
+          username,
+          email,
+          firstName,
+          lastName,
+          password,
+          profilePic: "fakepic",
+        })
+      ).catch(async (res) => {
+        const data = await res.json();
+        if (data && data.errors) setErrors(data.errors);
+      });
     }
     return setErrors([
       "Confirm password field must be the same as the password field.",
     ]);
   };
 
-  return (
+  return !switchModal ? (
     <div className="logout-div">
       <form className="logout-form" onSubmit={handleSubmit}>
         <div className="inputbox">
@@ -61,6 +73,22 @@ const SignupForm = () => {
           </label>
           <label>
             <input
+              placeholder="First Name"
+              type="text"
+              value={firstName}
+              onChange={(e) => setFirstName(e.target.value)}
+            />
+          </label>
+          <label>
+            <input
+              placeholder="Last Name"
+              type="text"
+              value={lastName}
+              onChange={(e) => setLastName(e.target.value)}
+            />
+          </label>
+          <label>
+            <input
               placeholder="Password:"
               type="password"
               value={password}
@@ -77,11 +105,20 @@ const SignupForm = () => {
           </label>
           <button type="submit">Register</button>
         </div>
-        <NavLink to="/login" style={{ padding: "20px" }}>
+        <a
+          href=""
+          style={{ paddingLeft: "30px" }}
+          onClick={(e) => {
+            e.preventDefault();
+            setSwitchModal(true);
+          }}
+        >
           Have an account?
-        </NavLink>
+        </a>
       </form>
     </div>
+  ) : (
+    <LoginForm />
   );
 };
 
