@@ -5,7 +5,7 @@ module.exports = (sequelize, DataTypes) => {
     {
       spotId: DataTypes.INTEGER,
       userId: DataTypes.INTEGER,
-      body: DataTypes.STRING,
+      body: DataTypes.TEXT,
       price: DataTypes.INTEGER,
       startDate: DataTypes.DATE,
       endDate: DataTypes.DATE,

@@ -13,7 +13,7 @@ module.exports = {
         references: { model: "Homes" },
       },
       amenity: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(60),
       },
       createdAt: {
         allowNull: false,

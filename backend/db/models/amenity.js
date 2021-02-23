@@ -3,7 +3,13 @@ module.exports = (sequelize, DataTypes) => {
   const Amenity = sequelize.define(
     "Amenity",
     {
-      homeId: DataTypes.INTEGER,
+      homeId: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        validate: {
+          len: [1, 60],
+        },
+      },
       Amenity: DataTypes.STRING,
     },
     {}

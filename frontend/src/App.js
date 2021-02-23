@@ -5,6 +5,7 @@ import { restoreUser } from "./store/session";
 import { useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 import SignupFormPage from "./components/SignupFormPage";
+import Home from "./components/Home";
 
 function App() {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -17,7 +18,9 @@ function App() {
     <>
       <Navigation />
       <Switch>
-        <Route exact path="/"></Route>
+        <Route exact path="/">
+          <Home />
+        </Route>
         <Route path="/login">
           <LoginFormPage />
         </Route>

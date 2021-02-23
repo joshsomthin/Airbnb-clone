@@ -19,18 +19,17 @@ module.exports = {
         unique: true,
       },
       firstName: {
-        type: Sequelize.STRING(256),
+        type: Sequelize.STRING(30),
         allowNull: false,
         unique: true,
       },
       lastName: {
-        type: Sequelize.STRING(256),
+        type: Sequelize.STRING(30),
         allowNull: false,
         unique: true,
       },
       profilePic: {
         type: Sequelize.STRING(256),
-        unique: true,
       },
       hashedPassword: {
         type: Sequelize.STRING.BINARY,

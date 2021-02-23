@@ -19,7 +19,7 @@ module.exports = {
         references: { model: "Spots" },
       },
       body: {
-        type: Sequelize.STRING,
+        type: Sequelize.TEXT,
         allowNull: false,
       },
       createdAt: {
