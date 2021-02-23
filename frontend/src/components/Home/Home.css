@@ -1,0 +1,36 @@
+.grid-container {
+  display: grid;
+}
+
+.background-img > img {
+  width: 100%;
+  height: 937px;
+  left: 0;
+  right: 0;
+}
+
+.places-card {
+  display: flex;
+  border: 2px solid black;
+  box-sizing: border-box;
+  height: 80px;
+
+  margin: 10px;
+  text-decoration: none;
+}
+
+.places-card:visited,
+.places-card:link {
+  text-decoration: none;
+  color: black;
+}
+
+.places-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+places-card > img {
+  width: 70px;
+  height: 70px;
+}

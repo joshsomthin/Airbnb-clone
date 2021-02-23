@@ -34,7 +34,7 @@ export default function ProfileButton() {
   return (
     <>
       <button onClick={openMenu}>
-        <i class="fas fa-user-circle"></i>
+        <i className="fas fa-user-circle"></i>
       </button>
       {showMenu ? (
         <ul>

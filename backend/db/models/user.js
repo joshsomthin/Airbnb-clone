@@ -32,6 +32,23 @@ module.exports = (sequelize, DataTypes) => {
           len: [60, 60],
         },
       },
+      firstName: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          len: [1, 30],
+        },
+      },
+      lastName: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          len: [1, 30],
+        },
+      },
+      profilePic: {
+        type: DataTypes.STRING,
+      },
     },
     {
       defaultScope: {
@@ -50,7 +67,9 @@ module.exports = (sequelize, DataTypes) => {
     }
   );
   User.associate = function (models) {
-    // associations can be defined here
+    User.hasMany(models.Spot, { foreignKey: "userId" });
+    User.hasMany(models.Booking, { foreignKey: "userId" });
+    User.hasMany(models.Booking, { foreignKey: "userId" });
   };
   User.prototype.toSafeObject = function () {
     // remember, this cannot be an arrow function
