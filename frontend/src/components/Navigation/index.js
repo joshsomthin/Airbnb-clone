@@ -6,11 +6,11 @@ import LoginFormModal from "../LoginFormModal";
 import "./Navigation.css";
 
 function Navigation({ isLoaded }) {
-  const sessionUser = useSelector((state) => state.session.user);
+  const sessionState = useSelector((state) => state.session.user);
 
   let sessionLinks;
-  if (sessionUser) {
-    sessionLinks = <ProfileButton user={sessionUser} />;
+  if (sessionState) {
+    sessionLinks = <ProfileButton user={sessionState} />;
   } else {
     sessionLinks = (
       <>
@@ -41,10 +41,7 @@ function Navigation({ isLoaded }) {
               <ProfileButton />
             </>
           ) : (
-            <>
-              <Link to="/login">Login</Link>
-              <Link to="/signup">Sign Up</Link>
-            </>
+            <>{isLoaded && sessionLinks}</>
           )}
         </div>
       </div>
