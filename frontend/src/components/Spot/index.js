@@ -16,7 +16,6 @@ const Spot = () => {
 
   const createBookings = (start, end) => {
     bookings.push(new Date(start));
-    console.log(start, bookings);
     if (
       start.getFullYear() === end.getFullYear() &&
       start.getMonth() === end.getMonth() &&
@@ -37,8 +36,6 @@ const Spot = () => {
   }, [dispatch]);
 
   const disableTiles = ({ date, view }) => {
-    // const books = bookings[0];
-
     return (
       view === "month" && // Block day tiles only
       bookings.some(

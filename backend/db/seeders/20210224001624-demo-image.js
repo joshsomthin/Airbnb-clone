@@ -7,11 +7,13 @@ module.exports = {
       [
         {
           spotId: 1,
-          imageUrl: "fakeimage for sure. first entry in images",
+          imageUrl:
+            "https://images.pexels.com/photos/2119713/pexels-photo-2119713.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
         },
         {
           spotId: 1,
-          imageUrl: "fakeimage2 for sure. second entry in images",
+          imageUrl:
+            "https://images.pexels.com/photos/2625766/pexels-photo-2625766.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
         },
       ],
       {}
