@@ -2,6 +2,7 @@
   padding-left: 300px;
   padding-right: 300px;
   width: 100%;
+  height: 100%;
   display: grid;
 }
 
@@ -11,6 +12,7 @@
 
 .images-container {
   display: flex;
+  max-height: 600px;
 }
 
 .images-container > div {
@@ -18,11 +20,16 @@
 }
 
 .house-info {
-  display: block;
+  display: flex;
+  justify-content: space-between;
 }
 
 .hosted-by {
   display: flex;
   justify-content: space-between;
   width: 500px;
+}
+
+.house-image {
+  height: fit-content;
 }
