@@ -1,16 +1,17 @@
 import { csrfFetch } from "./csrf";
 const GET_SPOTS = "spots/GET_SPOTS";
 
-const getSpots = (spotId) => ({
+const getSpots = (spot) => ({
   type: GET_SPOTS,
-  payload: spotId,
+  spot,
 });
 
 export const spots = ({ spotId }) => async (dispatch) => {
   const response = await csrfFetch(`/api/spots/${spotId}`);
   if (!response.ok) throw response;
   const data = await response.json();
-  dispatch(getSpots(spotId));
+  dispatch(getSpots(data));
+  return data;
 };
 
 const initialState = {

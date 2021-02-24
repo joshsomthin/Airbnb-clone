@@ -1,8 +1,28 @@
-.grid-container {
+.spot-container {
+  padding-left: 300px;
+  padding-right: 300px;
+  width: 100%;
   display: grid;
-  height: 400px;
 }
 
 .title {
+  display: flex;
+}
+
+.images-container {
+  display: flex;
+}
+
+.images-container > div {
+  margin: 5px;
+}
+
+.house-info {
   display: block;
+}
+
+.hosted-by {
+  display: flex;
+  justify-content: space-between;
+  width: 500px;
 }

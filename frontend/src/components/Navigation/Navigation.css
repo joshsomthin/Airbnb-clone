@@ -2,13 +2,11 @@ body {
   font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto,
     Helvetica Neue, sans-serif;
 }
-.navbar {
+nav {
   display: flex;
   background-color: whitesmoke;
   height: 80px;
   width: 100%;
-  top: 0;
-  position: fixed;
 }
 
 .div-container {
