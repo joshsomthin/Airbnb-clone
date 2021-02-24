@@ -1,5 +1,5 @@
 .grid-container {
-  display: flex;
+  display: grid;
 }
 
 .background-img > img {
