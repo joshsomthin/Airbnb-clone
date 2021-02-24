@@ -13,7 +13,11 @@ router.get(
   asnycHandler(async (req, res) => {
     const { spotId } = req.params;
     const spot = await Spot.findByPk(spotId, { include: { all: true } });
-    return res.json(spot);
+    if (spot) {
+      return res.json(spot);
+    } else {
+      return res.json({});
+    }
   })
 );
 
