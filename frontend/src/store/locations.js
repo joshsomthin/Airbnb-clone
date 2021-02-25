@@ -10,6 +10,7 @@ export const locationPopulate = () => async (dispatch) => {
   const response = await csrfFetch(`/api/spots/locations`);
   if (!response.ok) throw response;
   const data = await response.json();
+  console.log(data);
   dispatch(getLocations(data));
   return data;
 };

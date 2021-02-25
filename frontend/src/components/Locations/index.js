@@ -8,12 +8,8 @@ const Locations = () => {
   if (!located) {
     dispatch(locationPopulate());
   }
-  console.log(located);
-  return (
-    <div>
-      <div>{located.locations}</div>
-    </div>
-  );
+
+  return located && <div>{<div>Hello</div>}</div>;
 };
 
 export default Locations;
