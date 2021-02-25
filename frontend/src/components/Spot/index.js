@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { NavLink, Link, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { spots, reservations } from "../../store/spots";
+import { locationPopulate } from "../../store/locations";
 import LoginFormModal from "../LoginFormModal";
 import "./Spot.css";
 import Calendar from "react-calendar";
@@ -18,6 +19,7 @@ const Spot = () => {
   const sessionUser = useSelector((state) => state.session.user);
   const bookings = [];
 
+  dispatch(locationPopulate());
   const createBookings = (start, end) => {
     bookings.push(new Date(start));
     if (

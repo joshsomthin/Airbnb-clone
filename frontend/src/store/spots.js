@@ -1,6 +1,7 @@
 import { csrfFetch } from "./csrf";
 const GET_SPOTS = "spots/GET_SPOTS";
 const POST_RESERVATION = "spots/reserveSpot";
+const GET_LOCATIONS = "spots/getLocations";
 const getSpots = (spot) => ({
   type: GET_SPOTS,
   spot,
