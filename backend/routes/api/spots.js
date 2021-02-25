@@ -5,9 +5,23 @@ const { Booking } = require("../../db/models");
 
 const { handleValidationErrors } = require("../../utils/validation");
 const { setTokenCookie, requireAuth } = require("../../utils/auth");
-const { Spot } = require("../../db/models");
+const { Spot, Home } = require("../../db/models");
 
 const router = express.Router();
+
+router.get(
+  "/locations",
+  asnycHandler(async (req, res) => {
+    const spots = await Home.findAll({
+      attributes: ["spotId", "guest", "type", "latitude", "longitude"],
+    });
+    if (spots) {
+      return res.json(spots);
+    } else {
+      return res.json({});
+    }
+  })
+);
 
 router.get(
   "/:spotId",
