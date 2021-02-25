@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { NavLink, Link, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { spots, reservations } from "../../store/spots";
-import LoginForm from "../LoginFormModal/LoginForm";
+import LoginFormModal from "../LoginFormModal";
 import "./Spot.css";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
@@ -12,9 +12,11 @@ const Spot = () => {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
   const [calendar, setCalendar] = useState(new Date());
+  const [loginModal, setLoginModal] = useState(false);
   const [errors, setErrors] = useState([]);
   const sessionSpot = useSelector((state) => state.spots.spot);
   const sessionUser = useSelector((state) => state.session.user);
+  // const sessionFunc = useSelector((state) =>)
   const bookings = [];
 
   const createBookings = (start, end) => {
@@ -28,14 +30,11 @@ const Spot = () => {
     start.setDate(start.getDate() + 1);
     createBookings(new Date(start), end);
   };
-  useEffect(() => {
-    if (isLoaded) {
-      sessionSpot.Bookings.forEach((booking) => {
-        createBookings(new Date(booking.startDate), new Date(booking.endDate));
-      });
-    }
-  }),
-    [sessionSpot];
+  if (isLoaded) {
+    sessionSpot.Bookings.forEach((booking) => {
+      createBookings(new Date(booking.startDate), new Date(booking.endDate));
+    });
+  }
 
   useEffect(() => {
     dispatch(spots({ spotId })).then(() => setIsLoaded(true));
@@ -60,6 +59,10 @@ const Spot = () => {
     );
     console.log("waiting", sessionSpot);
     setErrors([]);
+    if (!sessionUser) {
+      setLoginModal(true);
+      return;
+    }
     if (sessionUser.id) {
       return dispatch(
         reservations({
@@ -77,7 +80,6 @@ const Spot = () => {
       });
     } else {
       console.log("here");
-      return <LoginForm />;
     }
   };
   return (
