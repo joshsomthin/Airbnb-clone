@@ -22,12 +22,12 @@ function Navigation({ isLoaded }) {
   }
 
   return (
-    <div className="navbar">
+    <nav className="navbar">
       <div className="div-container">
         <div className="icon-div">
           <Link to="/">
             <i className="fab fa-airbnb"></i>
-            airbnb
+            hosthouse
           </Link>
         </div>
         <div className="search-bar">
@@ -46,7 +46,7 @@ function Navigation({ isLoaded }) {
           )}
         </div>
       </div>
-    </div>
+    </nav>
   );
 }
 

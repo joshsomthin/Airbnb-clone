@@ -5,14 +5,19 @@ import CardFormat from "../CardFormat/index";
 const Home = () => {
   return (
     <div className="grid-container">
-      <div className="background-img">
-        <img src="https://a0.muscache.com/im/pictures/f0483d09-7d13-42d0-a40a-46d585c42220.jpg?im_w=1440" />
+      <div>
+        <div>
+          <div className="background-img">
+            <div style={{ zIndex: 1, position: "absolute" }}>Hello</div>
+            <img src="https://a0.muscache.com/im/pictures/f0483d09-7d13-42d0-a40a-46d585c42220.jpg?im_w=1440" />
+          </div>
+        </div>
       </div>
       <div className="places-container">
         <CardFormat
           location={"Ocean Shores"}
           classes={"places-card"}
-          route={"/signup"}
+          route={"/spots/1"}
           width={"80px"}
           height={"80px"}
           image={
@@ -22,7 +27,7 @@ const Home = () => {
         <CardFormat
           location={"Ocean Shores"}
           classes={"places-card"}
-          route={"/signup"}
+          route={"/spots/1"}
           width={"80px"}
           height={"80px"}
           image={
@@ -32,7 +37,7 @@ const Home = () => {
         <CardFormat
           location={"Ocean Shores"}
           classes={"places-card"}
-          route={"/signup"}
+          route={"/spots/1"}
           width={"80px"}
           height={"80px"}
           image={
@@ -42,7 +47,7 @@ const Home = () => {
         <CardFormat
           location={"Ocean Shores"}
           classes={"places-card"}
-          route={"/signup"}
+          route={"/spots/1"}
           width={"80px"}
           height={"80px"}
           image={
@@ -52,7 +57,7 @@ const Home = () => {
         <CardFormat
           location={"Ocean Shores"}
           classes={"places-card"}
-          route={"/signup"}
+          route={"/spots/1"}
           width={"80px"}
           height={"80px"}
           image={
@@ -62,7 +67,7 @@ const Home = () => {
         <CardFormat
           location={"Ocean Shores"}
           classes={"places-card"}
-          route={"/signup"}
+          route={"/spots/1"}
           width={"80px"}
           height={"80px"}
           image={
@@ -72,7 +77,7 @@ const Home = () => {
         <CardFormat
           location={"Ocean Shores"}
           classes={"places-card"}
-          route={"/signup"}
+          route={"/spots/1"}
           width={"80px"}
           height={"80px"}
           image={
@@ -82,7 +87,7 @@ const Home = () => {
         <CardFormat
           location={"Ocean Shores"}
           classes={"places-card"}
-          route={"/signup"}
+          route={"/spots/1"}
           width={"80px"}
           height={"80px"}
           image={

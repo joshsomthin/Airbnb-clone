@@ -1,15 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Modal } from "../../context/Modal";
 import LoginForm from "./LoginForm";
+import { addLoginFunc } from "../../store/session";
+import { useSelector, useDispatch } from "react-redux";
 
-function LoginFormModal() {
-  const [showModal, setShowModal] = useState(false);
+function LoginFormModal({ name = "Log In", classes }) {
+  const [showLoginModal, setShowLoginModal] = useState(false);
 
   return (
     <>
-      <button onClick={() => setShowModal(true)}>Log In</button>
-      {showModal && (
-        <Modal onClose={() => setShowModal(false)}>
+      <button className={classes} onClick={() => setShowLoginModal(true)}>
+        {name}
+      </button>
+      {showLoginModal && (
+        <Modal onClose={() => setShowLoginModal(false)}>
           <LoginForm />
         </Modal>
       )}
