@@ -4,7 +4,7 @@ module.exports = (sequelize, DataTypes) => {
     "Image",
     {
       spotId: DataTypes.INTEGER,
-      ImageUrl: DataTypes.STRING,
+      imageUrl: DataTypes.STRING,
     },
     {}
   );

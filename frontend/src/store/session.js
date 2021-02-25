@@ -2,6 +2,7 @@ import { csrfFetch } from "./csrf";
 
 const SET_USER = "session/SET_USER";
 const REMOVE_USER = "session/REMOVE_USER";
+const TOGGLE_LOGIN = "session/TOGGLE_LOGIN";
 
 const setUser = (user) => ({
   type: SET_USER,
