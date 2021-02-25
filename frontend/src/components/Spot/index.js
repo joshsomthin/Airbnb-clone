@@ -16,7 +16,6 @@ const Spot = () => {
   const [errors, setErrors] = useState([]);
   const sessionSpot = useSelector((state) => state.spots.spot);
   const sessionUser = useSelector((state) => state.session.user);
-  // const sessionFunc = useSelector((state) =>)
   const bookings = [];
 
   const createBookings = (start, end) => {
@@ -138,9 +137,15 @@ const Spot = () => {
                     onChange={setCalendar}
                     selectRange={true}
                   />
-                  <button type="submit" className="submit-button">
-                    Reserve
-                  </button>
+                  {!sessionUser ? (
+                    <LoginFormModal name={"Reserve"} classes={"submit-button"}>
+                      Reserve
+                    </LoginFormModal>
+                  ) : (
+                    <button type="submit" className="submit-button">
+                      Reserve
+                    </button>
+                  )}
                 </form>
               </div>
             </div>

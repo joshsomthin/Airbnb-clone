@@ -4,17 +4,14 @@ import LoginForm from "./LoginForm";
 import { addLoginFunc } from "../../store/session";
 import { useSelector, useDispatch } from "react-redux";
 
-function LoginFormModal({ truthy = false }) {
-  const [showLoginModal, setShowLoginModal] = useState(truthy);
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(addLoginFunc(setShowLoginModal));
-  }, []);
+function LoginFormModal({ name = "Log In", classes }) {
+  const [showLoginModal, setShowLoginModal] = useState(false);
 
   return (
     <>
-      <button onClick={() => setShowLoginModal(true)}>Log In</button>
+      <button className={classes} onClick={() => setShowLoginModal(true)}>
+        {name}
+      </button>
       {showLoginModal && (
         <Modal onClose={() => setShowLoginModal(false)}>
           <LoginForm />
