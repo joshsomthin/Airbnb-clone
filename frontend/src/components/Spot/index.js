@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { NavLink, Link, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { spots } from "../../store/spots";
+import { spots, reservations } from "../../store/spots";
+import LoginForm from "../LoginFormModal/LoginForm";
 import "./Spot.css";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
@@ -11,7 +12,9 @@ const Spot = () => {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
   const [calendar, setCalendar] = useState(new Date());
-  const sessionUser = useSelector((state) => state.spots);
+  const [errors, setErrors] = useState([]);
+  const sessionSpot = useSelector((state) => state.spots.spot);
+  const sessionUser = useSelector((state) => state.session.user);
   const bookings = [];
 
   const createBookings = (start, end) => {
@@ -25,11 +28,14 @@ const Spot = () => {
     start.setDate(start.getDate() + 1);
     createBookings(new Date(start), end);
   };
-  if (isLoaded) {
-    sessionUser.spot.Bookings.forEach((booking) => {
-      createBookings(new Date(booking.startDate), new Date(booking.endDate));
-    });
-  }
+  useEffect(() => {
+    if (isLoaded) {
+      sessionSpot.Bookings.forEach((booking) => {
+        createBookings(new Date(booking.startDate), new Date(booking.endDate));
+      });
+    }
+  }),
+    [sessionSpot];
 
   useEffect(() => {
     dispatch(spots({ spotId })).then(() => setIsLoaded(true));
@@ -46,16 +52,44 @@ const Spot = () => {
       )
     );
   };
+
+  const handleReservation = (e) => {
+    e.preventDefault();
+    const price = Math.round(
+      (calendar[1].getTime() - calendar[0].getTime()) / (1000 * 3600 * 24)
+    );
+    console.log("waiting", sessionSpot);
+    setErrors([]);
+    if (sessionUser.id) {
+      return dispatch(
+        reservations({
+          spotId: sessionSpot.Home.spotId,
+          userId: sessionUser.id,
+          price,
+          body: "I'd like to rent your space!",
+          startDate: calendar[0],
+          endDate: calendar[1],
+        })
+      ).catch(async (res) => {
+        const data = await res.json();
+        console.log(data);
+        if (data && data.errors) setErrors(data.errors);
+      });
+    } else {
+      console.log("here");
+      return <LoginForm />;
+    }
+  };
   return (
     isLoaded && (
       <div className="spot-container">
         <div>
-          <h2 className="title">{sessionUser.spot.body}</h2>
+          <h2 className="title">{sessionSpot.body}</h2>
         </div>
         <div className="images-container">
-          {sessionUser.spot.Images.map((image) => {
+          {sessionSpot.Images.map((image, idx) => {
             return (
-              <div className="house-image">
+              <div className="house-image" key={idx}>
                 <img
                   className="house-image"
                   src={image.imageUrl}
@@ -69,33 +103,43 @@ const Spot = () => {
           <div className="hosted-by">
             <div className="host-details">
               <div style={{ fontSize: "25px" }}>
-                Entire {sessionUser.spot.Home.type} hosted by{" "}
-                {sessionUser.spot.User.firstName}
+                Entire {sessionSpot.Home.type} hosted by{" "}
+                {sessionSpot.User.firstName}
               </div>
               <div>
                 <div>
-                  {sessionUser.spot.Home.guest} guests{" "}
-                  {sessionUser.spot.Home.bed} bed {sessionUser.spot.Home.bath}{" "}
-                  bath
+                  {sessionSpot.Home.guest} guests {sessionSpot.Home.bed} bed{" "}
+                  {sessionSpot.Home.bath} bath
                 </div>
               </div>
             </div>
             <div className="profile-pic ">
               <img
-                src={sessionUser.spot.User.profilePic}
+                src={sessionSpot.User.profilePic}
                 style={{ height: "60px", width: "60px", borderRadius: "50%" }}
               />
             </div>
           </div>
           <div>
             <div>
-              <div>
-                <Calendar
-                  tileDisabled={disableTiles}
-                  value={calendar}
-                  onChange={setCalendar}
-                  selectRange={true}
-                />
+              <div className="calendar-div">
+                <form onSubmit={handleReservation} style={{ padding: "20px" }}>
+                  <div className="house-price">
+                    <span style={{ fontWeight: "bold" }}>
+                      ${sessionSpot.price}
+                    </span>
+                    /night
+                  </div>
+                  <Calendar
+                    tileDisabled={disableTiles}
+                    value={calendar}
+                    onChange={setCalendar}
+                    selectRange={true}
+                  />
+                  <button type="submit" className="submit-button">
+                    Reserve
+                  </button>
+                </form>
               </div>
             </div>
           </div>
