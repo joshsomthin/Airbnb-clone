@@ -13,7 +13,7 @@ const MapContainer = ({ coordinates }) => {
   const key = process.env.REACT_APP_GOOGLE_MAPS_API;
   const mapStyles = {
     height: "90vh",
-    width: "70%",
+    width: "55%",
   };
 
   const defaultCenter = {
