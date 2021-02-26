@@ -24,6 +24,8 @@
   },
   "homepage": "https://github.com/joshsomthin/authenticat-me#readme",
   "dependencies": {
+    "@react-google-maps/api": "^2.1.1",
+    "google-maps-react": "^2.0.6",
     "react-calendar": "^3.3.1"
   }
 }

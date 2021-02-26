@@ -1,4 +1,8 @@
 /* TODO Add site wide styles */
+#map-container {
+  width: 500px;
+  height: 500px;
+}
 
 * {
   box-sizing: border-box;

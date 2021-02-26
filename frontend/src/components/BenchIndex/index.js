@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { locationPopulate } from "../../store/locations";
 
-const Locations = () => {
+const BenchIndex = () => {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
   const located = useSelector((state) => state.locations);
@@ -26,4 +26,4 @@ const Locations = () => {
   );
 };
 
-export default Locations;
+export default BenchIndex;
