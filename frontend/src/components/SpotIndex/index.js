@@ -1,10 +1,11 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { locationPopulate } from "../../store/locations";
-import MapContainer from "../BenchMap";
-import "./BenchIndex.css";
+import MapContainer from "../MapContainer";
+import PreviewCard from "../PreviewCard";
+import "./SpotIndex.css";
 
-const BenchIndex = () => {
+const SpotIndex = () => {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
   const located = useSelector((state) => state.locations);
@@ -32,13 +33,11 @@ const BenchIndex = () => {
     isLoaded && (
       <div className="box-container">
         <div className="cards-container">
-          {keys.map((el) => {
-            return (
-              <div style={{ display: "flex", width: "100%" }} key={el}>
-                {located.locations[el].type}
-              </div>
-            );
-          })}
+          <PreviewCard />
+          <PreviewCard />
+          <PreviewCard />
+          <PreviewCard />
+          <PreviewCard />
         </div>
         <MapContainer coordinates={passValues} />
       </div>
@@ -46,4 +45,4 @@ const BenchIndex = () => {
   );
 };
 
-export default BenchIndex;
+export default SpotIndex;
