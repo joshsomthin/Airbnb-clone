@@ -2,7 +2,6 @@ import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
 
 const MapContainer = () => {
   const key = process.env.REACT_APP_GOOGLE_MAPS_API;
-  console.log(key);
   const mapStyles = {
     height: "80vh",
     width: "80%",
