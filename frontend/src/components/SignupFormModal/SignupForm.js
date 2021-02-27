@@ -23,7 +23,7 @@ const SignupForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(username, email, firstName, lastName, password);
+
     if (confirmPassword === password) {
       setErrors([]);
       return dispatch(

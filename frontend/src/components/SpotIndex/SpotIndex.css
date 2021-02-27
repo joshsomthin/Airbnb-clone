@@ -1,0 +1,13 @@
+.box-container {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  justify-content: space-between;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.cards-container {
+  width: 100vh;
+  height: 100vh;
+}

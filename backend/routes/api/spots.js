@@ -5,7 +5,7 @@ const { Booking } = require("../../db/models");
 
 const { handleValidationErrors } = require("../../utils/validation");
 const { setTokenCookie, requireAuth } = require("../../utils/auth");
-const { Spot, Home } = require("../../db/models");
+const { Spot, Home, Image } = require("../../db/models");
 
 const router = express.Router();
 
@@ -14,6 +14,28 @@ router.get(
   asnycHandler(async (req, res) => {
     const spots = await Home.findAll({
       attributes: ["spotId", "guest", "type", "latitude", "longitude"],
+    });
+    if (spots) {
+      return res.json(spots);
+    } else {
+      return res.json({});
+    }
+  })
+);
+
+router.get(
+  "/search",
+  asnycHandler(async (req, res) => {
+    const spots = await Home.findAll({
+      attributes: ["spotId", "guest", "type", "latitude", "longitude"],
+      include: {
+        model: Spot,
+        attributes: ["body", "price"],
+        include: {
+          model: Image,
+          attributes: ["imageUrl"],
+        },
+      },
     });
     if (spots) {
       return res.json(spots);

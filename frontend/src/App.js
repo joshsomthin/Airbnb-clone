@@ -5,7 +5,7 @@ import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import Home from "./components/Home";
 import Spot from "./components/Spot";
-import Search from "./components/Search";
+import SpotIndex from "./components/SpotIndex";
 
 function App() {
   const dispatch = useDispatch();
@@ -18,17 +18,19 @@ function App() {
     <>
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
-        <Switch>
-          <Route exact path="/">
-            <Home />
-          </Route>
-          <Route path="/spots/:spotId">
-            <Spot />
-          </Route>
-          <Route exact path="/search">
-            <Search />
-          </Route>
-        </Switch>
+        <div style={{ overflowX: "hidden", overflowY: "hidden" }}>
+          <Switch>
+            <Route exact path="/">
+              <Home />
+            </Route>
+            <Route path="/spots/:spotId">
+              <Spot />
+            </Route>
+            <Route exact path="/search">
+              <SpotIndex />
+            </Route>
+          </Switch>
+        </div>
       )}
     </>
   );
