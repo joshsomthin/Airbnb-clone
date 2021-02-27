@@ -27,7 +27,15 @@ router.get(
   "/search",
   asnycHandler(async (req, res) => {
     const spots = await Home.findAll({
-      attributes: ["spotId", "guest", "type", "latitude", "longitude"],
+      attributes: [
+        "spotId",
+        "guest",
+        "type",
+        "latitude",
+        "longitude",
+        "bed",
+        "bath",
+      ],
       include: {
         model: Spot,
         attributes: ["body", "price"],
