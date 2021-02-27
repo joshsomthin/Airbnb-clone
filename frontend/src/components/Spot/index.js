@@ -58,7 +58,6 @@ const Spot = () => {
     const price = Math.round(
       (calendar[1].getTime() - calendar[0].getTime()) / (1000 * 3600 * 24)
     );
-    console.log("waiting", sessionSpot);
     setErrors([]);
     if (!sessionUser) {
       setLoginModal(true);
@@ -76,11 +75,9 @@ const Spot = () => {
         })
       ).catch(async (res) => {
         const data = await res.json();
-        console.log(data);
+
         if (data && data.errors) setErrors(data.errors);
       });
-    } else {
-      console.log("here");
     }
   };
   return (

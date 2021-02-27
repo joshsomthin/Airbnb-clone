@@ -9,7 +9,6 @@ import { useEffect, useState } from "react";
 
 const MapContainer = ({ coordinates }) => {
   const [selected, setSelected] = useState({});
-  console.log(coordinates);
   const key = process.env.REACT_APP_GOOGLE_MAPS_API;
   const mapStyles = {
     height: "90vh",

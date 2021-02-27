@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { locationPopulate } from "../../store/locations";
-import { spots } from "../../store/spots";
+import { getSearchLocations } from "../../store/locations";
 import MapContainer from "../MapContainer";
 import PreviewCard from "../PreviewCard";
 import "./SpotIndex.css";
@@ -10,11 +10,11 @@ const SpotIndex = () => {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
   const located = useSelector((state) => state.locations);
-  const spots = useSelector((state) => state.spots);
   let keys;
   let passValues = [];
 
   useEffect(() => {
+    dispatch(getSearchLocations());
     dispatch(locationPopulate()).then((req) => setIsLoaded(true));
     return function cleanup() {};
   }, [dispatch]);

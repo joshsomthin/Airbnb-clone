@@ -44,7 +44,6 @@ router.post(
       lastName,
       profilePic,
     } = req.body;
-    console.log(req.body);
     const user = await User.signup({
       username,
       email,
