@@ -135,6 +135,8 @@ const Spot = () => {
                     value={calendar}
                     onChange={setCalendar}
                     selectRange={true}
+                    maxDetail="month"
+                    minDate={new Date()}
                   />
                   {!sessionUser ? (
                     <LoginFormModal name={"Reserve"} classes={"submit-button"}>
