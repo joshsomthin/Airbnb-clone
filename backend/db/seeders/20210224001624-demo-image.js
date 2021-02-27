@@ -20,7 +20,35 @@ module.exports = {
           imageUrl: faker.image.nightlife(),
         },
         {
-          spotId: 1,
+          spotId: 2,
+          imageUrl: faker.image.nightlife(),
+        },
+        {
+          spotId: 3,
+          imageUrl: faker.image.nightlife(),
+        },
+        {
+          spotId: 4,
+          imageUrl: faker.image.nightlife(),
+        },
+        {
+          spotId: 5,
+          imageUrl: faker.image.nightlife(),
+        },
+        {
+          spotId: 6,
+          imageUrl: faker.image.nightlife(),
+        },
+        {
+          spotId: 7,
+          imageUrl: faker.image.nightlife(),
+        },
+        {
+          spotId: 8,
+          imageUrl: faker.image.nightlife(),
+        },
+        {
+          spotId: 8,
           imageUrl: faker.image.nightlife(),
         },
       ],

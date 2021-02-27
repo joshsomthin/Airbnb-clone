@@ -1,29 +1,28 @@
 import "./PreviewCard.css";
 import { NavLink } from "react-router-dom";
-const PreviewCard = ({ image }) => {
+
+const PreviewCard = ({ search }) => {
   return (
-    <NavLink to="/">
+    <NavLink to={`/spots/${search.spotId}`}>
       <div className="card">
         <div className="card-container">
           <div className="image-container">
             <div className="container">
-              <img src={image} />
+              <img src={search.Spot.Images[0].imageUrl} />
             </div>
           </div>
           <div>
             <div className="info-container">
               <div className="info-header">
-                <span className="light">Full Size Home</span>
-                <span className="dark">
-                  The Rager House!!! What an absolute steal
-                </span>
+                <span className="light">{search.type}</span>
+                <span className="dark">{search.Spot.body}</span>
               </div>
               <div className="info-details light">
-                <span>16 guests</span>
+                <span>{search.guest} guests</span>
                 <span> · </span>
-                <span>4 bedrooms</span>
+                <span>{search.bed} beds</span>
                 <span> · </span>
-                <span>3 bathrooms</span>
+                <span>{search.bath} bathrooms</span>
               </div>
               <div className="info-price">
                 <span className="bold dark">$40</span>
