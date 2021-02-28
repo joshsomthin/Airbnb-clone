@@ -4,7 +4,7 @@
 
 .background-img > img {
   width: 100%;
-  height: 937px;
+  height: 700px;
   left: 0;
   right: 0;
 }
@@ -26,6 +26,8 @@
 .places-container {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  padding-left: 80px;
+  padding-right: 80px;
 }
 
 places-card > img {
