@@ -1,9 +1,9 @@
 import { NavLink } from "react-router-dom";
 import "./CardFormat.css";
-const CardFormat = ({ route, image, width, height, classes, location }) => {
+const CardFormat = ({ route, image, location }) => {
   return (
-    <NavLink to={route} className={classes}>
-      <img style={{ width: width, height: height }} src={image} />
+    <NavLink to={route} className="places-card">
+      <img src={image} />
       <div>{location}</div>
     </NavLink>
   );

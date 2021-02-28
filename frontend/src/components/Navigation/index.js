@@ -38,7 +38,13 @@ function Navigation({ isLoaded }) {
             </div>
           </NavLink>
         </div>
-        <div>
+        <div
+          style={{
+            width: "247px",
+            display: "flex",
+            justifyContent: "flex-end",
+          }}
+        >
           {sessionState ? (
             <>
               <ProfileButton />
