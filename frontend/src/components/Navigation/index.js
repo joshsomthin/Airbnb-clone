@@ -33,9 +33,9 @@ function Navigation({ isLoaded }) {
         <div className="search-bar">
           <input placeholder="Start your search" />
           <NavLink to="/search">
-            <button>
+            <div>
               <i className="fas fa-search-location"></i>
-            </button>
+            </div>
           </NavLink>
         </div>
         <div>

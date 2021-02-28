@@ -64,11 +64,15 @@ nav {
   outline: none;
 }
 
-.search-bar > button {
+.search-bar div {
   border-radius: 50%;
   background-color: #ff385c;
   color: white;
   height: 30px;
+  width: 30px;
   margin: 10px;
   font-size: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
