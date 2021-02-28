@@ -14,9 +14,8 @@ const SpotIndex = () => {
   let passValues = [];
 
   useEffect(() => {
-    dispatch(getSearchLocations());
+    dispatch(getSearchLocations()).then((req) => setIsLoaded(false));
     dispatch(locationPopulate()).then((req) => setIsLoaded(true));
-    return function cleanup() {};
   }, [dispatch]);
   if (isLoaded) {
     keys = Object.keys(located.locations);

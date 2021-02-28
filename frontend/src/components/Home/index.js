@@ -1,4 +1,3 @@
-import { NavLink } from "react-router-dom";
 import "./Home.css";
 import CardFormat from "../CardFormat/index";
 
@@ -21,7 +20,7 @@ const Home = () => {
           classes={"places-card"}
           route={"/spots/1"}
           width={"80px"}
-          height={"80px"}
+          height={"100%"}
           image={
             "https://i.pinimg.com/originals/35/b8/6a/35b86a10b2611586bc454f8de3904b77.png"
           }
@@ -31,7 +30,7 @@ const Home = () => {
           classes={"places-card"}
           route={"/spots/1"}
           width={"80px"}
-          height={"80px"}
+          height={"100%"}
           image={
             "https://i.pinimg.com/originals/35/b8/6a/35b86a10b2611586bc454f8de3904b77.png"
           }
@@ -41,7 +40,7 @@ const Home = () => {
           classes={"places-card"}
           route={"/spots/1"}
           width={"80px"}
-          height={"80px"}
+          height={"100%"}
           image={
             "https://i.pinimg.com/originals/35/b8/6a/35b86a10b2611586bc454f8de3904b77.png"
           }
@@ -51,7 +50,7 @@ const Home = () => {
           classes={"places-card"}
           route={"/spots/1"}
           width={"80px"}
-          height={"80px"}
+          height={"100%"}
           image={
             "https://i.pinimg.com/originals/35/b8/6a/35b86a10b2611586bc454f8de3904b77.png"
           }
@@ -61,7 +60,7 @@ const Home = () => {
           classes={"places-card"}
           route={"/spots/1"}
           width={"80px"}
-          height={"80px"}
+          height={"100%"}
           image={
             "https://i.pinimg.com/originals/35/b8/6a/35b86a10b2611586bc454f8de3904b77.png"
           }
@@ -71,7 +70,7 @@ const Home = () => {
           classes={"places-card"}
           route={"/spots/1"}
           width={"80px"}
-          height={"80px"}
+          height={"100%"}
           image={
             "https://i.pinimg.com/originals/35/b8/6a/35b86a10b2611586bc454f8de3904b77.png"
           }
@@ -81,7 +80,7 @@ const Home = () => {
           classes={"places-card"}
           route={"/spots/1"}
           width={"80px"}
-          height={"80px"}
+          height={"100%"}
           image={
             "https://i.pinimg.com/originals/35/b8/6a/35b86a10b2611586bc454f8de3904b77.png"
           }
@@ -91,7 +90,7 @@ const Home = () => {
           classes={"places-card"}
           route={"/spots/1"}
           width={"80px"}
-          height={"80px"}
+          height={"100%"}
           image={
             "https://i.pinimg.com/originals/35/b8/6a/35b86a10b2611586bc454f8de3904b77.png"
           }
