@@ -12,11 +12,16 @@
 
 .images-container {
   display: flex;
-  max-height: 600px;
+  max-height: 500px;
+  max-width: auto;
+  flex-wrap: wrap;
+  left: 0;
+  right: 0;
+  margin-bottom: 40px;
 }
 
-.images-container > div {
-  margin: 5px;
+.images-container div {
+  object-fit: cover;
 }
 
 .house-info {
@@ -28,10 +33,12 @@
   display: flex;
   justify-content: space-between;
   width: 500px;
+  height: 500px;
 }
 
-.house-image {
-  height: fit-content;
+.house-image img {
+  height: 100%;
+  width: 100%;
 }
 
 .calendar-div {
@@ -43,4 +50,30 @@
 
 .house-price {
   font-size: 25px;
+}
+#first img {
+  height: 100%;
+  width: 100%;
+}
+
+.house-image {
+  height: 50%;
+  width: 50%;
+}
+
+.other-images {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#first {
+  height: 100%;
+  width: 50%;
+}
+
+.other-images div {
+  display: flex;
+  flex-wrap: wrap;
 }

@@ -39,10 +39,8 @@ const Spot = () => {
 
   useEffect(() => {
     dispatch(spots({ spotId })).then(() => setIsLoaded(true));
-    return function cleanup() {
-      dispatch(spots({ spotId })).then(() => setIsLoaded(true));
-    };
-  }, []);
+    return function cleanup() {};
+  }, [dispatch]);
 
   const disableTiles = ({ date, view }) => {
     return (
@@ -91,17 +89,21 @@ const Spot = () => {
           <h2 className="title">{sessionSpot.body}</h2>
         </div>
         <div className="images-container">
-          {sessionSpot.Images.map((image, idx) => {
-            return (
-              <div className="house-image" key={idx}>
-                <img
-                  className="house-image"
-                  src={image.imageUrl}
-                  style={{ height: "auto", width: "240px" }}
-                />
-              </div>
-            );
-          })}
+          <div id={"first"} key={0}>
+            <img src={sessionSpot.Images[0].imageUrl} />
+          </div>
+          <div className="other-images">
+            {sessionSpot.Images.map((image, idx) => {
+              if (idx === 0) {
+                return;
+              }
+              return (
+                <div className="house-image" id={idx} key={idx}>
+                  <img src={image.imageUrl} />
+                </div>
+              );
+            })}
+          </div>
         </div>
         <div className="house-info">
           <div className="hosted-by">
@@ -135,6 +137,7 @@ const Spot = () => {
                     /night
                   </div>
                   <Calendar
+                    style={{ position: "sticky" }}
                     tileDisabled={disableTiles}
                     value={calendar}
                     onChange={setCalendar}

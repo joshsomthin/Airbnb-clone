@@ -5,8 +5,8 @@ module.exports = {
     return queryInterface.bulkInsert("Spots", [
       {
         userId: 1,
-        body: "Welcome to my beautiful home",
-        price: parseInt(faker.commerce.price()),
+        body: "Rhein Haus",
+        price: 5000,
         createdAt: new Date(),
         updatedAt: new Date(),
       },

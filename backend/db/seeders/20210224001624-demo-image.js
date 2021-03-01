@@ -7,17 +7,22 @@ module.exports = {
       [
         {
           spotId: 1,
-          imageUrl:
-            "https://images.pexels.com/photos/2119713/pexels-photo-2119713.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+          imageUrl: "https://eventective-media.azureedge.net/2007315_lg.jpg",
         },
         {
           spotId: 1,
           imageUrl:
-            "https://images.pexels.com/photos/2625766/pexels-photo-2625766.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+            "https://uploads.visitseattle.org/2018/03/01012353/Rhein-Haus-Bocce-Court-Clock-View_631e5652-5056-a36a-08a74121c8d1c065.jpg",
         },
         {
           spotId: 1,
-          imageUrl: faker.image.nightlife(),
+          imageUrl:
+            "https://media-cdn.tripadvisor.com/media/photo-s/10/b7/6c/71/the-rhein-haus-seattle.jpg",
+        },
+        {
+          spotId: 1,
+          imageUrl:
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTruYSLRw9cZtp4dIssrw9b3TnX5Yx6AngvNQ&usqp=CAU",
         },
         {
           spotId: 2,
