@@ -2,3 +2,25 @@ places-card > img {
   width: 70px;
   height: 70px;
 }
+
+a > img {
+  width: 80px;
+  height: 100%;
+  border-radius: 10px;
+  margin-right: 10px;
+}
+
+.inner-text-div > div {
+  margin-bottom: 5px;
+}
+
+.inner-text-div {
+  display: flex;
+  align-content: center;
+  flex-flow: column;
+}
+
+.outer-text-div {
+  display: flex;
+  align-items: center;
+}

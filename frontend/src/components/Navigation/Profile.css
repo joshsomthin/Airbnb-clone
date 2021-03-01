@@ -1,0 +1,10 @@
+.user-icon {
+  font-size: 35px;
+  color: rgb(82, 82, 82);
+  background-color: white;
+  padding: 10px;
+}
+
+.icon-container {
+  display: flex;
+}

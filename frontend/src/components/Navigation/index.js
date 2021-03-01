@@ -5,7 +5,7 @@ import ProfileButton from "./ProfileButton";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
 import "./Navigation.css";
-
+import Profile from "./Profile";
 function Navigation({ isLoaded }) {
   const sessionState = useSelector((state) => state.session.user);
 
@@ -38,14 +38,22 @@ function Navigation({ isLoaded }) {
             </div>
           </NavLink>
         </div>
-        <div>
-          {sessionState ? (
-            <>
-              <ProfileButton />
-            </>
-          ) : (
-            <>{isLoaded && sessionLinks}</>
-          )}
+        <div
+          style={{
+            width: "247px",
+            display: "flex",
+            justifyContent: "flex-end",
+          }}
+        >
+          <Profile>
+            {sessionState ? (
+              <>
+                <ProfileButton />
+              </>
+            ) : (
+              <>{isLoaded && sessionLinks}</>
+            )}
+          </Profile>
         </div>
       </div>
     </nav>
