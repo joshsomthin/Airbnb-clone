@@ -112,7 +112,7 @@ const SignupForm = () => {
         <a
           className="modal-switch"
           href=""
-          style={{ paddingLeft: "30px" }}
+          style={{ paddingLeft: "30px", paddingBottom: "10px" }}
           onClick={(e) => {
             e.preventDefault();
             setSwitchModal(true);
