@@ -36,20 +36,18 @@ const MapContainer = ({ coordinates }) => {
             />
           );
         })}
+        {selected.location && (
+          <InfoWindow
+            position={selected.location}
+            clickable={true}
+            onCloseClick={() => setSelected({})}
+          >
+            <p>here</p>
+          </InfoWindow>
+        )}
       </GoogleMap>
     </LoadScript>
   );
 };
 
-{
-  /* {selected.location && (
-  <InfoWindow
-    position={selected.location}
-    clickable={true}
-    onCloseClick={() => setSelected({})}
-  >
-    <p>{selected.name}</p>
-  </InfoWindow>
-)} */
-}
 export default MapContainer;

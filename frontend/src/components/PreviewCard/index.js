@@ -25,7 +25,7 @@ const PreviewCard = ({ search }) => {
                 <span>{search.bath} bathrooms</span>
               </div>
               <div className="info-price">
-                <span className="bold dark">$40</span>
+                <span className="bold dark">${search.Spot.price}</span>
                 <span>/ night</span>
               </div>
             </div>
