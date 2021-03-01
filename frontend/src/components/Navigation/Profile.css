@@ -1,10 +1,19 @@
 .user-icon {
-  font-size: 35px;
+  font-size: 20px;
   color: rgb(82, 82, 82);
   background-color: white;
-  padding: 10px;
+}
+.bars {
+  padding-right: 5px;
+  padding-left: 10px;
 }
 
 .icon-container {
   display: flex;
+}
+
+.icon-a {
+  border: 1px solid rgb(155, 155, 155);
+  padding: 5px;
+  border-radius: 20px;
 }

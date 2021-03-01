@@ -40,9 +40,9 @@ const Profile = () => {
     <>
       {showLoginModal ? <LoginFormModal /> : ""}
       {showSignupModal ? <SignupFormModal /> : ""}
-      <a onClick={openMenu}>
+      <a className="icon-a" onClick={openMenu}>
         <div className="icon-container">
-          <div className="user-icon">
+          <div className="user-icon bars">
             <i class="fas fa-bars"></i>
           </div>
           <div className="user-icon">
