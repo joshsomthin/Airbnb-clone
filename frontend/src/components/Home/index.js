@@ -8,7 +8,6 @@ const Home = () => {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
   const located = useSelector((state) => state.locations);
-  // console.log(located.search[0]);
 
   useEffect(() => {
     dispatch(getSearchLocations()).then((req) => setIsLoaded(true));

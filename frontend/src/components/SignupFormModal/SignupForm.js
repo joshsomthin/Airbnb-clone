@@ -13,6 +13,7 @@ const SignupForm = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setconfirmPassword] = useState("");
   const [switchModal, setSwitchModal] = useState(false);
+  const [closeModal, setCloseModal] = useState(false);
   const [errors, setErrors] = useState([]);
   const sessionUser = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
@@ -43,9 +44,10 @@ const SignupForm = () => {
     return setErrors([
       "Confirm password field must be the same as the password field.",
     ]);
+    setCloseModal(true);
   };
 
-  return !switchModal ? (
+  return !switchModal && !closeModal ? (
     <div className="logout-div">
       <form className="logout-form" onSubmit={handleSubmit}>
         <div className="inputbox">

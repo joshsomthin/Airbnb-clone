@@ -8,22 +8,24 @@ module.exports = {
         {
           userId: 1,
           spotId: 1,
-          body: faker.lorem.sentence(),
+          body:
+            "Had a great time with my friends partying here! Will definitely be back soon!",
         },
         {
           userId: 2,
           spotId: 1,
-          body: faker.lorem.sentence(),
+          body: "They got bars and bocce!?! What's not to love?",
         },
         {
           userId: 3,
           spotId: 1,
-          body: faker.lorem.sentence(),
+          body:
+            "Can't remember much of what happend that night. Would come back 10/10",
         },
         {
           userId: 4,
           spotId: 1,
-          body: faker.lorem.sentence(),
+          body: "Got barfed on ಠ_ಠ. Music was good though.",
         },
       ],
       {}

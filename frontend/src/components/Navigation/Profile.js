@@ -43,47 +43,52 @@ const Profile = () => {
       <a className="icon-a" onClick={openMenu}>
         <div className="icon-container">
           <div className="user-icon bars">
-            <i class="fas fa-bars"></i>
+            <i className="fas fa-bars"></i>
           </div>
           <div className="user-icon">
-            <i class="fas fa-user-circle"></i>
+            <i className="fas fa-user-circle"></i>
           </div>
         </div>
       </a>
+
       {showMenu && sessionState ? (
-        <ul>
-          <li>{sessionState.username}</li>
-          <li>{sessionState.email}</li>
-          <li>
+        <div className="user-info">
+          <div>{sessionState.username}</div>
+          <div>{sessionState.email}</div>
+          <div>
             <Link to="/logout" onClick={onLogoutClick}>
               Logout
             </Link>
-          </li>
-        </ul>
+          </div>
+        </div>
       ) : (
         ""
       )}
       {showMenu && !sessionState ? (
-        <ul>
-          <a
-            href=""
-            onClick={(e) => {
-              e.preventDefault();
-              setShowLoginModal(true);
-            }}
-          >
-            Login
-          </a>
-          <a
-            href=""
-            onClick={(e) => {
-              e.preventDefault();
-              setShowSignupModal(true);
-            }}
-          >
-            Sign Up
-          </a>
-        </ul>
+        <div className="user-info">
+          <div>
+            <a
+              href=""
+              onClick={(e) => {
+                e.preventDefault();
+                setShowLoginModal(true);
+              }}
+            >
+              Login
+            </a>
+          </div>
+          <div>
+            <a
+              href=""
+              onClick={(e) => {
+                e.preventDefault();
+                setShowSignupModal(true);
+              }}
+            >
+              Sign Up
+            </a>
+          </div>
+        </div>
       ) : (
         ""
       )}

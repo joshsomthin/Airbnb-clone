@@ -21,12 +21,10 @@ module.exports = {
       firstName: {
         type: Sequelize.STRING(60),
         allowNull: false,
-        unique: true,
       },
       lastName: {
         type: Sequelize.STRING(60),
         allowNull: false,
-        unique: true,
       },
       profilePic: {
         type: Sequelize.TEXT,
