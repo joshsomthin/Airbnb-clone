@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap");
+
 .grid-container {
   display: grid;
 }
@@ -33,4 +35,13 @@
 places-card > img {
   width: 70px;
   height: 70px;
+}
+.opening-text {
+  font-family: "Roboto", sans-serif;
+  z-index: 1;
+  position: absolute;
+  top: 400px;
+  left: 30px;
+  font-size: 70px;
+  font-weight: 900;
 }
