@@ -1,6 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import { locationPopulate } from "../../store/locations";
 import { getSearchLocations } from "../../store/locations";
 import MapContainer from "../MapContainer";
 import PreviewCard from "../PreviewCard";
@@ -10,21 +9,26 @@ const SpotIndex = () => {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
   const located = useSelector((state) => state.locations);
-  let keys;
   let passValues = [];
 
   useEffect(async () => {
-    await dispatch(getSearchLocations());
-    dispatch(locationPopulate()).then((req) => setIsLoaded(true));
+    dispatch(getSearchLocations()).then((req) => setIsLoaded(true));
   }, [dispatch]);
+
   if (isLoaded) {
-    keys = Object.keys(located.locations);
-    keys.map((el) => {
+    console.log(located);
+    located.search.map((el) => {
       passValues.push({
-        type: located.locations[el].type,
+        id: el.spotId,
+        name: el.Spot.body,
+        type: el.type,
+        spot: {
+          price: el.Spot.price,
+          image: el.Spot.Images[0].imageUrl,
+        },
         location: {
-          lat: parseFloat(located.locations[el].latitude),
-          lng: parseFloat(located.locations[el].longitude),
+          lat: parseFloat(el.latitude),
+          lng: parseFloat(el.longitude),
         },
       });
     });
