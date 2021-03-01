@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 import { logout } from "../../store/session";
 import LoginFormModal from "../LoginFormModal";
-import SignupForm from "../SignupFormModal/SignupForm";
 import SignupFormModal from "../SignupFormModal";
 import "./Profile.css";
 
@@ -35,12 +34,12 @@ const Profile = () => {
     document.addEventListener("click", closeMenu);
 
     return () => document.removeEventListener("click", closeMenu);
-  }, [showMenu]);
+  }, [showMenu, showLoginModal, showSignupModal]);
 
-  return showLoginModal ? (
-    <LoginFormModal />
-  ) : (
+  return (
     <>
+      {showLoginModal ? <LoginFormModal /> : ""}
+      {showSignupModal ? <SignupFormModal /> : ""}
       <a onClick={openMenu}>
         <div className="icon-container">
           <div className="user-icon">
@@ -76,13 +75,13 @@ const Profile = () => {
             Login
           </a>
           <a
-            href="/"
+            href=""
             onClick={(e) => {
               e.preventDefault();
               setShowSignupModal(true);
             }}
           >
-            Signup
+            Sign Up
           </a>
         </ul>
       ) : (

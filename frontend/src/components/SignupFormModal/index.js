@@ -3,13 +3,10 @@ import { Modal } from "../../context/Modal";
 import SignupForm from "./SignupForm";
 
 function SignupFormModal() {
-  const [showModal, setShowModal] = useState(false);
+  const [showModal, setShowModal] = useState(true);
 
   return (
     <>
-      <a href onClick={() => setShowModal(true)}>
-        Sign Up
-      </a>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
           <SignupForm />
