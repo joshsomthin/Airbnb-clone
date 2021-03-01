@@ -26,7 +26,7 @@ module.exports = {
         },
         {
           spotId: 2,
-          imageUrl: "https://i.ytimg.com/vi/t1wGabBTcgw/maxresdefault.jpg",
+          imageUrl: "https://images.otstatic.com/prod/23713897/1/huge.jpg",
         },
         {
           spotId: 2,
@@ -40,7 +40,7 @@ module.exports = {
         },
         {
           spotId: 2,
-          imageUrl: "https://images.otstatic.com/prod/23713897/1/huge.jpg",
+          imageUrl: "https://i.ytimg.com/vi/t1wGabBTcgw/maxresdefault.jpg",
         },
         {
           spotId: 3,
