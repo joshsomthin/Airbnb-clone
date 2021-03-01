@@ -29,9 +29,7 @@ const Home = () => {
         <div>
           <div>
             <div className="background-img">
-              <div style={{ zIndex: 1, position: "absolute" }}>
-                Checking to see if working
-              </div>
+              <div className="opening-text">Explore Events in your area.</div>
               <img src="https://a0.muscache.com/im/pictures/f0483d09-7d13-42d0-a40a-46d585c42220.jpg" />
             </div>
           </div>
