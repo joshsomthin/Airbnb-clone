@@ -44,6 +44,7 @@ const SignupForm = () => {
     return setErrors([
       "Confirm password field must be the same as the password field.",
     ]);
+    setCloseModal(true);
   };
 
   return !switchModal && !closeModal ? (

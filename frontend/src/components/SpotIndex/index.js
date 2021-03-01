@@ -13,8 +13,8 @@ const SpotIndex = () => {
   let keys;
   let passValues = [];
 
-  useEffect(() => {
-    dispatch(getSearchLocations()).then((req) => setIsLoaded(false));
+  useEffect(async () => {
+    await dispatch(getSearchLocations());
     dispatch(locationPopulate()).then((req) => setIsLoaded(true));
   }, [dispatch]);
   if (isLoaded) {

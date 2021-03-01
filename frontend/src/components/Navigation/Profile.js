@@ -43,10 +43,10 @@ const Profile = () => {
       <a className="icon-a" onClick={openMenu}>
         <div className="icon-container">
           <div className="user-icon bars">
-            <i class="fas fa-bars"></i>
+            <i className="fas fa-bars"></i>
           </div>
           <div className="user-icon">
-            <i class="fas fa-user-circle"></i>
+            <i className="fas fa-user-circle"></i>
           </div>
         </div>
       </a>

@@ -39,7 +39,10 @@ const Spot = () => {
 
   useEffect(() => {
     dispatch(spots({ spotId })).then(() => setIsLoaded(true));
-  }, [dispatch]);
+    return function cleanup() {
+      dispatch(spots({ spotId })).then(() => setIsLoaded(true));
+    };
+  }, []);
 
   const disableTiles = ({ date, view }) => {
     return (
@@ -55,14 +58,14 @@ const Spot = () => {
 
   const handleReservation = (e) => {
     e.preventDefault();
-    const price = Math.round(
-      (calendar[1].getTime() - calendar[0].getTime()) / (1000 * 3600 * 24)
-    );
-    setErrors([]);
     if (!sessionUser) {
       setLoginModal(true);
       return;
     }
+    const price = Math.round(
+      (calendar[1].getTime() - calendar[0].getTime()) / (1000 * 3600 * 24)
+    );
+    setErrors([]);
     if (sessionUser.id) {
       return dispatch(
         reservations({
@@ -80,6 +83,7 @@ const Spot = () => {
       });
     }
   };
+
   return (
     isLoaded && (
       <div className="spot-container">
@@ -138,15 +142,16 @@ const Spot = () => {
                     maxDetail="month"
                     minDate={new Date()}
                   />
-                  {!sessionUser ? (
+                  {loginModal ? (
                     <LoginFormModal name={"Reserve"} classes={"submit-button"}>
                       Reserve
                     </LoginFormModal>
                   ) : (
-                    <button type="submit" className="submit-button">
-                      Reserve
-                    </button>
+                    ""
                   )}
+                  <button type="submit" className="submit-button">
+                    Reserve
+                  </button>
                 </form>
               </div>
             </div>
