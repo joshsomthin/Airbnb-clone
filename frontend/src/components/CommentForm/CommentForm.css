@@ -1,0 +1,14 @@
+.comment-area {
+  width: 60%;
+  height: 70px;
+}
+
+.comment-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.comment-button {
+  width: 80px;
+  height: 30px;
+}

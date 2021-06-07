@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
+import "./CommentForm.css";
 
-const CommentForm = () => {
+const CommentForm = ({ spotId }) => {
   const [comment, setComment] = useState("");
-  const user = useSelector((state) => state.session?.id);
+  const user = useSelector((state) => state.session?.user?.id);
 
   const submitComment = () => {};
 
@@ -20,7 +21,9 @@ const CommentForm = () => {
           onChange={updateComment}
           value={comment}
         ></textarea>
-        <button type="submit">Submit</button>
+        <button className="submit-button comment-button" type="submit">
+          Submit
+        </button>
       </form>
     </>
   ) : (
