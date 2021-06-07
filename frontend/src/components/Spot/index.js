@@ -7,6 +7,7 @@ import LoginFormModal from "../LoginFormModal";
 import "./Spot.css";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
+import CommentForm from "../CommentForm";
 
 const Spot = () => {
   const { spotId } = useParams();
@@ -160,6 +161,7 @@ const Spot = () => {
             </div>
           </div>
         </div>
+        <CommentForm spotId={spotId} />
       </div>
     )
   );

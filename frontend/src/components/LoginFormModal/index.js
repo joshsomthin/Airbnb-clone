@@ -1,14 +1,20 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { Modal } from "../../context/Modal";
+import { closeModal } from "../../store/modal";
 import LoginForm from "./LoginForm";
 
 function LoginFormModal() {
-  const [showLoginModal, setShowLoginModal] = useState(true);
+  const dispatch = useDispatch();
+  const showLoginModal = useSelector((state) => state.modal?.modal);
 
+  const closethis = async () => {
+    await dispatch(closeModal());
+  };
   return (
     <>
-      {showLoginModal && (
-        <Modal onClose={() => setShowLoginModal(false)}>
+      {showLoginModal === "Login" && (
+        <Modal onClose={closethis}>
           <LoginForm />
         </Modal>
       )}

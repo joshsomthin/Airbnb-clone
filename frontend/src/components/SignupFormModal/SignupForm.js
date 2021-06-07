@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import { signup } from "../../store/session";
 import { Redirect, NavLink } from "react-router-dom";
-import LoginForm from "../LoginFormModal/LoginForm";
+import { closeModal, setModal } from "../../store/modal";
 import "./Signup.css";
 
 const SignupForm = () => {
@@ -12,8 +12,6 @@ const SignupForm = () => {
   const [lastName, setLastName] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setconfirmPassword] = useState("");
-  const [switchModal, setSwitchModal] = useState(false);
-  const [closeModal, setCloseModal] = useState(false);
   const [errors, setErrors] = useState([]);
   const sessionUser = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
@@ -44,10 +42,10 @@ const SignupForm = () => {
     return setErrors([
       "Confirm password field must be the same as the password field.",
     ]);
-    setCloseModal(true);
+    dispatch(closeModal());
   };
 
-  return !switchModal && !closeModal ? (
+  return (
     <div className="logout-div">
       <form className="logout-form" onSubmit={handleSubmit}>
         <div className="inputbox">
@@ -115,15 +113,13 @@ const SignupForm = () => {
           style={{ paddingLeft: "30px", paddingBottom: "10px" }}
           onClick={(e) => {
             e.preventDefault();
-            setSwitchModal(true);
+            dispatch(setModal("Login"));
           }}
         >
           Have an account?
         </a>
       </form>
     </div>
-  ) : (
-    <LoginForm />
   );
 };
 

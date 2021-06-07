@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
-import * as sessionActions from "../../store/session";
+import { login } from "../../store/session";
 import { useDispatch } from "react-redux";
-import SignupForm from "../SignupFormModal/SignupForm";
+import { closeModal, setModal } from "../../store/modal";
 import "./LoginForm.css";
 
 function LoginForm() {
@@ -10,31 +9,30 @@ function LoginForm() {
   const [credential, setCredential] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
-  const [switchModal, setSwitchModal] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setErrors([]);
-    return dispatch(sessionActions.login({ credential, password })).catch(
-      async (res) => {
-        const data = await res.json();
-        if (data && data.errors) setErrors(data.errors);
-      }
-    );
+    await dispatch(login({ credential, password })).catch(async (res) => {
+      const data = await res.json();
+      if (data && data.errors) setErrors(data.errors);
+    });
+    return dispatch(closeModal());
   };
 
-  const loginDemo = (e) => {
+  const loginDemo = async (e) => {
     e.preventDefault();
     setErrors([]);
-    return dispatch(
-      sessionActions.login({ credential: "Demo-lition", password: "password" })
+    await dispatch(
+      login({ credential: "Demo-lition", password: "password" })
     ).catch(async (res) => {
       const data = await res.json();
       if (data && data.errors) setErrors(data.errors);
     });
+    return dispatch(closeModal());
   };
 
-  return !switchModal ? (
+  return (
     <form className="login-form" onSubmit={handleSubmit}>
       <div className="inputbox">
         <h2>Login</h2>
@@ -70,14 +68,12 @@ function LoginForm() {
         style={{ paddingLeft: "30px" }}
         onClick={(e) => {
           e.preventDefault();
-          setSwitchModal(true);
+          dispatch(setModal("Sign Up"));
         }}
       >
         Need an account?
       </a>
     </form>
-  ) : (
-    <SignupForm />
   );
 }
 
