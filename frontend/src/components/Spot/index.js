@@ -8,6 +8,7 @@ import "./Spot.css";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import CommentForm from "../CommentForm";
+import CommentSection from "../CommentSection";
 
 const Spot = () => {
   const { spotId } = useParams();
@@ -162,6 +163,7 @@ const Spot = () => {
           </div>
         </div>
         <CommentForm spotId={spotId} />
+        <CommentSection />
       </div>
     )
   );
