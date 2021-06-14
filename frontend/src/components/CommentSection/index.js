@@ -7,7 +7,7 @@ const CommentSection = () => {
   return (
     <div>
       {comments.map((el, idx) => {
-        return <Comment key={idx} text={el.body} />;
+        return <Comment key={idx} comment={el} />;
       })}
     </div>
   );

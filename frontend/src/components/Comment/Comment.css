@@ -1,0 +1,18 @@
+.comment-user-info {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.comment-user-image {
+  margin-right: 10px;
+}
+
+h5 {
+  margin: 0;
+}
+
+.comment {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
