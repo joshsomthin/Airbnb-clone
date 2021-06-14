@@ -16,3 +16,19 @@ h5 {
   margin-top: 20px;
   margin-bottom: 20px;
 }
+
+.button-div {
+  display: flex;
+  flex-direction: row;
+}
+
+.edit-delete-button {
+  margin-right: 10px;
+  margin-top: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.edit-delete-button:hover {
+  text-decoration: underline;
+}

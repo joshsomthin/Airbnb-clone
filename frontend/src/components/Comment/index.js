@@ -5,6 +5,10 @@ import "./Comment.css";
 const Comment = ({ comment }) => {
   const user = useSelector((state) => state.session?.user?.id);
   const [body, setBody] = useState(comment.body);
+
+  const editComment = () => {};
+  const deleteComment = () => {};
+
   return (
     <div className="comment">
       <div className="comment-user-info">
@@ -16,7 +20,20 @@ const Comment = ({ comment }) => {
         <h5>{comment.User.username}</h5>
       </div>
       <span>{body}</span>
-      <div>{user === comment.id ? <button>Edit</button> : ""}</div>
+      <div className="button-div">
+        {user === comment.id ? (
+          <>
+            <div className="edit-delete-button" onClick={editComment}>
+              Edit
+            </div>
+            <div className="edit-delete-button" onClick={deleteComment}>
+              Delete
+            </div>
+          </>
+        ) : (
+          ""
+        )}
+      </div>
     </div>
   );
 };
