@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import "./Comment.css";
 
 const Comment = ({ comment }) => {
+  const user = useSelector((state) => state.session?.user?.id);
+  const [body, setBody] = useState(comment.body);
   return (
     <div className="comment">
       <div className="comment-user-info">
@@ -12,7 +15,8 @@ const Comment = ({ comment }) => {
         ></img>
         <h5>{comment.User.username}</h5>
       </div>
-      <span>{comment.body}</span>
+      <span>{body}</span>
+      <div>{user === comment.id ? <button>Edit</button> : ""}</div>
     </div>
   );
 };
