@@ -27,10 +27,27 @@ router.get(
   })
 );
 
-// router.post(
-//   "/:spotId",
-//   asyncHandler(async (req, res) => {})
-// );
+const validateComment = [
+  check("body")
+    .exists({ checkFalsy: true })
+    .notEmpty()
+    .withMessage("Please enter a comment."),
+  handleValidationErrors,
+];
+
+router.post(
+  "/",
+  validateComment,
+  asnycHandler(async (req, res, next) => {
+    const { spotId, userId, body } = req.body;
+    const comment = Review.create({
+      userId,
+      spotId,
+      body,
+    });
+    return res.json({ comment });
+  })
+);
 
 router.delete(
   "/:commentId",

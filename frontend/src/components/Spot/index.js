@@ -22,6 +22,7 @@ const Spot = () => {
   const bookings = [];
 
   dispatch(locationPopulate());
+  dispatch(comments(spotId));
   const createBookings = (start, end) => {
     bookings.push(new Date(start));
     if (

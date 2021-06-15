@@ -8,17 +8,14 @@ const CommentSection = ({ spotId }) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const comment = useSelector((state) => state.spots?.comments);
 
-  useEffect(() => {
-    dispatch(comments(spotId)).then(() => setIsLoaded(true));
-  }, []);
+  // dispatch(comments(spotId)).then(() => setIsLoaded(true));
+  useEffect(() => {}, [comment]);
   return (
-    isLoaded && (
-      <div>
-        {comment.map((el, idx) => {
-          return <Comment key={idx} comment={el} />;
-        })}
-      </div>
-    )
+    <div>
+      {comment.map((el, idx) => {
+        return <Comment key={idx} comment={el} />;
+      })}
+    </div>
   );
 };
 

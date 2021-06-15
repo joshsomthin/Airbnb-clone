@@ -19,12 +19,24 @@ const getComments = (comments) => ({
 });
 
 export const comments = (spotId) => async (dispatch) => {
-  console.log(spotId);
   const response = await csrfFetch(`/api/comments/${spotId}`);
   if (!response.ok) throw response;
   const data = await response.json();
   dispatch(getComments(data));
   return data;
+};
+
+export const newComment = (body, spotId, userId) => async (dispatch) => {
+  const response = await csrfFetch(`/api/comments`, {
+    method: "POST",
+    body: JSON.stringify({ spotId, userId, body }),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  if (!response.ok) throw response;
+  const data = await response.json();
+  return await dispatch(comments(spotId));
 };
 
 export const deleteComment = (commentId, spotId) => async (dispatch) => {
@@ -33,7 +45,7 @@ export const deleteComment = (commentId, spotId) => async (dispatch) => {
   });
   if (!response.ok) throw response;
   const data = await response.json();
-  return comments(spotId);
+  return await dispatch(comments(spotId));
 };
 
 export const spots =

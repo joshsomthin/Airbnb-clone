@@ -1,13 +1,17 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { newComment } from "../../store/spots";
 import "./CommentForm.css";
 
 const CommentForm = ({ spotId }) => {
+  const dispatch = useDispatch();
   const [comment, setComment] = useState("");
   const user = useSelector((state) => state.session?.user?.id);
 
-  const submitComment = (e) => {
+  const submitComment = async (e) => {
     e.preventDefault();
+    console.log("hello");
+    await dispatch(newComment(comment, spotId, user));
   };
 
   const updateComment = (e) => {

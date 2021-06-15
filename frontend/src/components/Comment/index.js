@@ -25,7 +25,7 @@ const Comment = ({ comment }) => {
       </div>
       <span>{body}</span>
       <div className="button-div">
-        {user === comment.id ? (
+        {user === comment.userId ? (
           <>
             <div className="edit-delete-button" onClick={editComment}>
               Edit
