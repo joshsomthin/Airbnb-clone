@@ -12,34 +12,43 @@ const reserveSpot = (dates) => ({
   dates,
 });
 
-export const spots = ({ spotId }) => async (dispatch) => {
-  const response = await csrfFetch(`/api/spots/${spotId}`);
-  if (!response.ok) throw response;
-  const data = await response.json();
-  dispatch(getSpots(data));
-  return data;
-};
+export const deleteComment =
+  ({ commentId, spotId }) =>
+  async (dispatch) => {
+    const response = await csrfFetch(
+      `api/spots/${spotId}/comment/${commentId}`
+    );
+    if (!response.ok) throw response;
+    const data = await response.json();
+    dispatch(getSpots(data));
+    return data;
+  };
 
-export const reservations = ({
-  spotId,
-  userId,
-  price,
-  body,
-  startDate,
-  endDate,
-}) => async (dispatch) => {
-  const response = await csrfFetch(`/api/spots/${spotId}/reserve`, {
-    method: "POST",
-    body: JSON.stringify({ spotId, userId, price, body, startDate, endDate }),
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
-  if (!response.ok) throw response;
-  const data = await response.json();
-  dispatch(reserveSpot(data));
-  return data;
-};
+export const spots =
+  ({ spotId }) =>
+  async (dispatch) => {
+    const response = await csrfFetch(`/api/spots/${spotId}`);
+    if (!response.ok) throw response;
+    const data = await response.json();
+    dispatch(getSpots(data));
+    return data;
+  };
+
+export const reservations =
+  ({ spotId, userId, price, body, startDate, endDate }) =>
+  async (dispatch) => {
+    const response = await csrfFetch(`/api/spots/${spotId}/reserve`, {
+      method: "POST",
+      body: JSON.stringify({ spotId, userId, price, body, startDate, endDate }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    if (!response.ok) throw response;
+    const data = await response.json();
+    dispatch(reserveSpot(data));
+    return data;
+  };
 
 const initialState = {
   spot: null,

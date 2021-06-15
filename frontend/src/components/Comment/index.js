@@ -1,13 +1,17 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { deleteComment } from "../../store/spots";
 import "./Comment.css";
 
 const Comment = ({ comment }) => {
+  const dispatch = useDispatch();
   const user = useSelector((state) => state.session?.user?.id);
   const [body, setBody] = useState(comment.body);
 
   const editComment = () => {};
-  const deleteComment = () => {};
+  const deleteComment = async (e) => {
+    await dispatch(deleteComment(comment.id, comment.spotId));
+  };
 
   return (
     <div className="comment">

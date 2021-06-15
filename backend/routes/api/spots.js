@@ -100,4 +100,27 @@ router.post(
   })
 );
 
+router.delete(
+  "/:spotId/comment/:commentId",
+  requireAuth,
+  asnycHandler(async (req, res) => {
+    const { commentId, spotId } = req.params;
+    const comment = await Review.findByPk(commentId);
+    await comment.destroy();
+    const spot = await Spot.findByPk(spotId, {
+      include: [
+        { model: User },
+        { model: Booking },
+        { model: Image },
+        { model: Home },
+        { model: Review, include: [{ model: User }] },
+      ],
+    });
+    if (spot) {
+      return res.json(spot);
+    } else {
+      return res.json({});
+    }
+  })
+);
 module.exports = router;
