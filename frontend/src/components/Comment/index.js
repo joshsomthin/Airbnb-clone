@@ -9,8 +9,8 @@ const Comment = ({ comment }) => {
   const [body, setBody] = useState(comment.body);
 
   const editComment = () => {};
-  const deleteComment = async (e) => {
-    await dispatch(deleteComment(comment.id, comment.spotId));
+  const deleteComment = async () => {
+    return await dispatch(deleteComment(comment.id, comment.spotId));
   };
 
   return (

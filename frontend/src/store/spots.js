@@ -18,17 +18,22 @@ const getComments = (comments) => ({
   comments,
 });
 
-export const deleteComment =
-  ({ commentId, spotId }) =>
-  async (dispatch) => {
-    const response = await csrfFetch(
-      `/api/spots/${spotId}/comment/${commentId}`
-    );
-    if (!response.ok) throw response;
-    const data = await response.json();
-    dispatch(getSpots(data));
-    return data;
-  };
+export const comments = (spotId) => async (dispatch) => {
+  console.log(spotId);
+  const response = await csrfFetch(`/api/comments/${spotId}`);
+  if (!response.ok) throw response;
+  const data = await response.json();
+  dispatch(getComments(data));
+  return data;
+};
+
+export const deleteComment = (commentId, spotId) => async (dispatch) => {
+  const response = await csrfFetch(`/api/comments/${commentId}`);
+  if (!response.ok) throw response;
+  const data = await response.json();
+  comments(spotId);
+  return data;
+};
 
 export const spots =
   ({ spotId }) =>
@@ -72,6 +77,9 @@ export const spotReducer = (state = initialState, action) => {
       newState.reservations = action.dates;
       return newState;
     case GET_COMMENTS:
+      newState = Object.assign({}, state);
+      newState.comments = action.comments;
+      return newState;
     default:
       return state;
   }

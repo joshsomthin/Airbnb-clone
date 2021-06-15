@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import Comment from "../Comment";
 
 const CommentSection = () => {
-  const comments = useSelector((state) => state.spots?.spot?.Reviews);
+  const comments = useSelector((state) => state.spots?.comments);
   return (
     <div>
       {comments.map((el, idx) => {

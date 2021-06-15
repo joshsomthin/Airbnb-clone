@@ -4,15 +4,19 @@ const { check } = require("express-validator");
 const { handleValidationErrors } = require("../../utils/validation");
 
 const { setTokenCookie, restoreUser } = require("../../utils/auth");
-const { User, Review } = require("../../db/models");
+const { Spot, Review, User } = require("../../db/models");
 const router = express.Router();
 
 router.get(
   "/:spotId",
   asnycHandler(async (req, res) => {
+    const { spotId } = req.params;
     const comments = await Review.findAll({
       where: {
         spotId: spotId,
+      },
+      include: {
+        model: User,
       },
     });
     if (comments) {
@@ -23,14 +27,20 @@ router.get(
   })
 );
 
-router.post(
-  "/:spotId",
-  asyncHandler(async (req, res) => {})
-);
+// router.post(
+//   "/:spotId",
+//   asyncHandler(async (req, res) => {})
+// );
 
 router.delete(
   "/:commentId",
-  asyncHandler(async (req, res) => {})
+  asnycHandler(async (req, res) => {
+    const { commentId } = req.params;
+    const comment = Review.findByPk(commentId);
+    console.log(comment);
+    comment.destroy();
+    return {};
+  })
 );
 
 module.exports = router;

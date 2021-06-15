@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { NavLink, Link, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { spots, reservations } from "../../store/spots";
+import { spots, reservations, comments } from "../../store/spots";
 import { locationPopulate } from "../../store/locations";
 import LoginFormModal from "../LoginFormModal";
 import "./Spot.css";
@@ -40,6 +40,7 @@ const Spot = () => {
   }
 
   useEffect(() => {
+    dispatch(comments(spotId));
     dispatch(spots({ spotId })).then(() => setIsLoaded(true));
     return function cleanup() {};
   }, [dispatch]);
