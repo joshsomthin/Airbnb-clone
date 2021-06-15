@@ -36,11 +36,9 @@ router.delete(
   "/:commentId",
   asnycHandler(async (req, res) => {
     const { commentId } = req.params;
-    console.log(commentId);
-    // const comment = Review.findByPk(commentId);
-    // console.log(comment);
-    // comment.destroy();
-    return res.json({ commentId: commentId });
+    const comment = await Review.findByPk(commentId);
+    await comment.destroy();
+    return res.json({ commentId });
   })
 );
 
