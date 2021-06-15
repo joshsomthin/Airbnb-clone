@@ -10,7 +10,6 @@ const CommentForm = ({ spotId }) => {
 
   const submitComment = async (e) => {
     e.preventDefault();
-    console.log("hello");
     await dispatch(newComment(comment, spotId, user));
   };
 

@@ -3,14 +3,21 @@ import { useSelector, useDispatch } from "react-redux";
 import { deleteComment } from "../../store/spots";
 import "./Comment.css";
 
-const Comment = ({ comment }) => {
+const Comment = ({
+  commentId,
+  spotId,
+  comment,
+  userId,
+  profilePic,
+  username,
+}) => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.session?.user?.id);
-  const [body, setBody] = useState(comment.body);
+  const [body, setBody] = useState(comment);
 
   const editComment = () => {};
   const removeComment = async () => {
-    await dispatch(deleteComment(comment.id, comment.spotId));
+    await dispatch(deleteComment(commentId, spotId));
   };
 
   return (
@@ -19,13 +26,13 @@ const Comment = ({ comment }) => {
         <img
           className="comment-user-image"
           style={{ height: "30px", width: "30px", borderRadius: "50%" }}
-          src={comment.User.profilePic}
+          src={profilePic}
         ></img>
-        <h5>{comment.User.username}</h5>
+        <h5>{username}</h5>
       </div>
-      <span>{body}</span>
+      <span>{comment}</span>
       <div className="button-div">
-        {user === comment.userId ? (
+        {user === userId ? (
           <>
             <div className="edit-delete-button" onClick={editComment}>
               Edit

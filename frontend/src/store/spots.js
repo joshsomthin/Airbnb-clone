@@ -35,7 +35,6 @@ export const newComment = (body, spotId, userId) => async (dispatch) => {
     },
   });
   if (!response.ok) throw response;
-  const data = await response.json();
   return await dispatch(comments(spotId));
 };
 
@@ -44,7 +43,6 @@ export const deleteComment = (commentId, spotId) => async (dispatch) => {
     method: "DELETE",
   });
   if (!response.ok) throw response;
-  const data = await response.json();
   return await dispatch(comments(spotId));
 };
 

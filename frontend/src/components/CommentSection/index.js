@@ -4,16 +4,23 @@ import { comments } from "../../store/spots";
 import Comment from "../Comment";
 
 const CommentSection = ({ spotId }) => {
-  const dispatch = useDispatch();
-  const [isLoaded, setIsLoaded] = useState(false);
   const comment = useSelector((state) => state.spots?.comments);
 
-  // dispatch(comments(spotId)).then(() => setIsLoaded(true));
   useEffect(() => {}, [comment]);
   return (
     <div>
       {comment.map((el, idx) => {
-        return <Comment key={idx} comment={el} />;
+        return (
+          <Comment
+            key={idx}
+            spotId={el.spotId}
+            commentId={el.id}
+            comment={el.body}
+            userId={el.userId}
+            username={el.User.username}
+            profilePic={el.User.profilePic}
+          />
+        );
       })}
     </div>
   );
