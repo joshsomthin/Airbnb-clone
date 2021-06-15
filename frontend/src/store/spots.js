@@ -28,11 +28,12 @@ export const comments = (spotId) => async (dispatch) => {
 };
 
 export const deleteComment = (commentId, spotId) => async (dispatch) => {
+  debugger;
   const response = await csrfFetch(`/api/comments/${commentId}`);
   if (!response.ok) throw response;
   const data = await response.json();
-  comments(spotId);
-  return data;
+  return comments(spotId);
+  return {};
 };
 
 export const spots =

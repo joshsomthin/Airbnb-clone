@@ -40,10 +40,9 @@ const Spot = () => {
   }
 
   useEffect(() => {
-    dispatch(comments(spotId));
     dispatch(spots({ spotId })).then(() => setIsLoaded(true));
     return function cleanup() {};
-  }, [dispatch]);
+  }, []);
 
   const disableTiles = ({ date, view }) => {
     return (
@@ -164,7 +163,7 @@ const Spot = () => {
           </div>
         </div>
         <CommentForm spotId={spotId} />
-        <CommentSection />
+        <CommentSection spotId={spotId} />
       </div>
     )
   );

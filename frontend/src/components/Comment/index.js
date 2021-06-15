@@ -9,8 +9,8 @@ const Comment = ({ comment }) => {
   const [body, setBody] = useState(comment.body);
 
   const editComment = () => {};
-  const deleteComment = async () => {
-    return await dispatch(deleteComment(comment.id, comment.spotId));
+  const removeComment = async () => {
+    await dispatch(deleteComment(comment.id, comment.spotId));
   };
 
   return (
@@ -30,7 +30,7 @@ const Comment = ({ comment }) => {
             <div className="edit-delete-button" onClick={editComment}>
               Edit
             </div>
-            <div className="edit-delete-button" onClick={deleteComment}>
+            <div className="edit-delete-button" onClick={removeComment}>
               Delete
             </div>
           </>
