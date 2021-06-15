@@ -6,7 +6,9 @@ const CommentForm = ({ spotId }) => {
   const [comment, setComment] = useState("");
   const user = useSelector((state) => state.session?.user?.id);
 
-  const submitComment = () => {};
+  const submitComment = (e) => {
+    e.preventDefault();
+  };
 
   const updateComment = (e) => {
     setComment(e.target.value);
