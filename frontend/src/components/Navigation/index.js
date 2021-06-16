@@ -10,7 +10,7 @@ function Navigation({}) {
         <div className="icon-div">
           <Link to="/">
             <i className="fab fa-airbnb"></i>
-            hosthouse
+            <span>hosthouse</span>
           </Link>
         </div>
         <div className="search-bar">
