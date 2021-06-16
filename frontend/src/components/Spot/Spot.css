@@ -4,6 +4,7 @@
   width: 100%;
   height: 100%;
   display: grid;
+  margin-bottom: 40px;
 }
 
 .title {

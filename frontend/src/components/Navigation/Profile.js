@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 import { logout } from "../../store/session";
+import { setModal } from "../../store/modal";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
 import "./Profile.css";
@@ -9,8 +10,8 @@ import "./Profile.css";
 const Profile = () => {
   const sessionState = useSelector((state) => state.session.user);
   const [showMenu, setShowMenu] = useState(false);
-  const [showLoginModal, setShowLoginModal] = useState(false);
-  const [showSignupModal, setShowSignupModal] = useState(false);
+  const showLoginModal = useSelector((state) => state.modal?.modal);
+  const showSignupModal = useSelector((state) => state.modal?.status);
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -34,7 +35,7 @@ const Profile = () => {
     document.addEventListener("click", closeMenu);
 
     return () => document.removeEventListener("click", closeMenu);
-  }, [showMenu, showLoginModal, showSignupModal]);
+  }, [showMenu]);
 
   return (
     <>
@@ -71,7 +72,7 @@ const Profile = () => {
               href=""
               onClick={(e) => {
                 e.preventDefault();
-                setShowLoginModal(true);
+                dispatch(setModal("Login"));
               }}
             >
               Login
@@ -82,7 +83,7 @@ const Profile = () => {
               href=""
               onClick={(e) => {
                 e.preventDefault();
-                setShowSignupModal(true);
+                dispatch(setModal("Sign Up"));
               }}
             >
               Sign Up

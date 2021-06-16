@@ -1,11 +1,10 @@
 const express = require("express");
 const asnycHandler = require("express-async-handler");
 const { check } = require("express-validator");
-const { Booking } = require("../../db/models");
 
 const { handleValidationErrors } = require("../../utils/validation");
 const { setTokenCookie, requireAuth } = require("../../utils/auth");
-const { Spot, Home, Image } = require("../../db/models");
+const { Spot, Home, Image, User, Booking } = require("../../db/models");
 
 const router = express.Router();
 
@@ -57,7 +56,14 @@ router.get(
   "/:spotId",
   asnycHandler(async (req, res) => {
     const { spotId } = req.params;
-    const spot = await Spot.findByPk(spotId, { include: { all: true } });
+    const spot = await Spot.findByPk(spotId, {
+      include: [
+        { model: User },
+        { model: Booking },
+        { model: Image },
+        { model: Home },
+      ],
+    });
     if (spot) {
       return res.json(spot);
     } else {

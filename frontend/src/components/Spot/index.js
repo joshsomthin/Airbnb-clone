@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { NavLink, Link, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { spots, reservations } from "../../store/spots";
+import { spots, reservations, comments } from "../../store/spots";
 import { locationPopulate } from "../../store/locations";
 import LoginFormModal from "../LoginFormModal";
 import "./Spot.css";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
+import CommentForm from "../CommentForm";
+import CommentSection from "../CommentSection";
 
 const Spot = () => {
   const { spotId } = useParams();
@@ -20,6 +22,7 @@ const Spot = () => {
   const bookings = [];
 
   dispatch(locationPopulate());
+  dispatch(comments(spotId));
   const createBookings = (start, end) => {
     bookings.push(new Date(start));
     if (
@@ -40,7 +43,7 @@ const Spot = () => {
   useEffect(() => {
     dispatch(spots({ spotId })).then(() => setIsLoaded(true));
     return function cleanup() {};
-  }, [dispatch]);
+  }, []);
 
   const disableTiles = ({ date, view }) => {
     return (
@@ -160,6 +163,8 @@ const Spot = () => {
             </div>
           </div>
         </div>
+        <CommentForm spotId={spotId} />
+        <CommentSection spotId={spotId} />
       </div>
     )
   );
