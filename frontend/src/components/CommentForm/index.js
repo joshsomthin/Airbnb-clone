@@ -11,6 +11,7 @@ const CommentForm = ({ spotId }) => {
   const submitComment = async (e) => {
     e.preventDefault();
     await dispatch(newComment(comment, spotId, user));
+    setComment("");
   };
 
   const updateComment = (e) => {
