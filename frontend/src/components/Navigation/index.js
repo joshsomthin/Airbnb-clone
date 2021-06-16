@@ -1,6 +1,5 @@
 import React from "react";
 import { NavLink, Link } from "react-router-dom";
-import { useSelector } from "react-redux";
 import "./Navigation.css";
 import Profile from "./Profile";
 function Navigation({}) {

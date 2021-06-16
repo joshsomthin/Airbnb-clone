@@ -130,7 +130,7 @@ const Spot = () => {
             </div>
           </div>
           <div>
-            <div>
+            <div className="calendar-div-container">
               <div className="calendar-div">
                 <form onSubmit={handleReservation} style={{ padding: "20px" }}>
                   <div className="house-price">

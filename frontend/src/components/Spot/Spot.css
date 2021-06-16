@@ -7,11 +7,24 @@
   margin-bottom: 40px;
 }
 
+.calendar-div-container {
+  display: flex;
+  justify-content: flex-end;
+}
+.calendar-div {
+  border: 1px solid rgb(221, 221, 221);
+  border-radius: 12px;
+  max-width: 392px;
+  max-height: 392px;
+}
+
 .title {
   display: flex;
 }
 
 .images-container {
+  border-radius: 12px;
+  overflow-y: hidden;
   display: flex;
   max-height: 500px;
   max-width: auto;
@@ -26,27 +39,18 @@
 }
 
 .house-info {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: 1fr 1fr;
 }
 
 .hosted-by {
-  display: flex;
-  justify-content: space-between;
-  width: 500px;
-  height: 500px;
+  display: grid;
 }
 
 .house-image img {
   height: 100%;
   width: 100%;
-}
-
-.calendar-div {
-  border: 1px solid rgb(184, 184, 184);
-  border-radius: 10%;
-  display: flex;
-  padding: 10px;
 }
 
 .house-price {
