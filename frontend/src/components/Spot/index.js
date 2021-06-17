@@ -128,6 +128,7 @@ const Spot = () => {
                 style={{ height: "60px", width: "60px", borderRadius: "50%" }}
               />
             </div>
+            <div className="body-text">Body Text</div>
           </div>
           <div>
             <div className="calendar-div-container">
