@@ -28,11 +28,10 @@
 }
 
 .images-container {
-  border-radius: 12px;
   overflow-y: hidden;
+  border-radius: 12px;
   display: flex;
   max-height: 500px;
-  max-width: auto;
   flex-wrap: wrap;
   left: 0;
   right: 0;
@@ -53,7 +52,7 @@
 .house-info {
   display: grid;
   grid-template-columns: 2fr 1fr;
-  grid-template-rows: 1fr 1fr;
+  grid-template-rows: 1fr;
 }
 
 .hosted-by {
