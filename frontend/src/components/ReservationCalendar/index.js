@@ -7,10 +7,14 @@ import LoginFormModal from "../LoginFormModal";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 
-const ReservationCalendar = ({ price }) => {
+const ReservationCalendar = ({ spot, price }) => {
   const dispatch = useDispatch();
   const [calendar, setCalendar] = useState(new Date());
   const [isLoaded, setIsLoaded] = useState(false);
+  const [loginModal, setLoginModal] = useState(false);
+  const [errors, setErrors] = useState([]);
+  const sessionUser = useSelector((state) => state.session.user);
+  const bookings = [];
 
   const createBookings = (start, end) => {
     bookings.push(new Date(start));
@@ -24,7 +28,7 @@ const ReservationCalendar = ({ price }) => {
     createBookings(new Date(start), end);
   };
   if (isLoaded) {
-    sessionSpot.Bookings.forEach((booking) => {
+    spot.Bookings.forEach((booking) => {
       createBookings(new Date(booking.startDate), new Date(booking.endDate));
     });
   }
@@ -54,7 +58,7 @@ const ReservationCalendar = ({ price }) => {
     if (sessionUser.id) {
       return dispatch(
         reservations({
-          spotId: sessionSpot.Home.spotId,
+          spotId: spot.Home.spotId,
           userId: sessionUser.id,
           price,
           body: "I'd like to rent your space!",
@@ -74,7 +78,7 @@ const ReservationCalendar = ({ price }) => {
       <div className="calendar-div">
         <form onSubmit={handleReservation} style={{ padding: "20px" }}>
           <div className="house-price">
-            <span style={{ fontWeight: "bold" }}>${sessionSpot.price}</span>
+            <span style={{ fontWeight: "bold" }}>${price}</span>
             /night
           </div>
           <Calendar

@@ -2,13 +2,13 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { spots, reservations, comments } from "../../store/spots";
-import { locationPopulate } from "../../store/locations";
 import LoginFormModal from "../LoginFormModal";
 import "./Spot.css";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import CommentForm from "../CommentForm";
 import CommentSection from "../CommentSection";
+import ReservationCalendar from "../ReservationCalendar";
 
 const Spot = () => {
   const { spotId } = useParams();
@@ -41,7 +41,8 @@ const Spot = () => {
   useEffect(() => {
     dispatch(spots({ spotId }))
       .then(() => dispatch(comments(spotId)))
-      .then(() => setIsLoaded(true));
+      .then(() => setIsLoaded(true))
+      .then(() => console.log(bookings));
     return function cleanup() {};
   }, []);
 
@@ -131,37 +132,7 @@ const Spot = () => {
             <div className="body-text">{sessionSpot.description}</div>
           </div>
           <div>
-            <div className="calendar-div-container">
-              <div className="calendar-div">
-                <form onSubmit={handleReservation} style={{ padding: "20px" }}>
-                  <div className="house-price">
-                    <span style={{ fontWeight: "bold" }}>
-                      ${sessionSpot.price}
-                    </span>
-                    /night
-                  </div>
-                  <Calendar
-                    style={{ position: "sticky" }}
-                    tileDisabled={disableTiles}
-                    value={calendar}
-                    onChange={setCalendar}
-                    selectRange={true}
-                    maxDetail="month"
-                    minDate={new Date()}
-                  />
-                  {loginModal ? (
-                    <LoginFormModal name={"Reserve"} classes={"submit-button"}>
-                      Reserve
-                    </LoginFormModal>
-                  ) : (
-                    ""
-                  )}
-                  <button type="submit" className="submit-button">
-                    Reserve
-                  </button>
-                </form>
-              </div>
-            </div>
+            <ReservationCalendar spot={sessionSpot} price={sessionSpot.price} />
           </div>
         </div>
         <CommentForm spotId={spotId} />

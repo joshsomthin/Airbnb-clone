@@ -99,4 +99,11 @@ router.post(
   })
 );
 
+router.post(
+  "/:spotId/bookings",
+  asnycHandler(async (req, res) => {
+    return res.json("hello");
+  })
+);
+
 module.exports = router;
