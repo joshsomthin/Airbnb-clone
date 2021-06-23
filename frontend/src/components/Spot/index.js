@@ -128,9 +128,10 @@ const Spot = () => {
                 style={{ height: "60px", width: "60px", borderRadius: "50%" }}
               />
             </div>
+            <div className="body-text">{sessionSpot.description}</div>
           </div>
           <div>
-            <div>
+            <div className="calendar-div-container">
               <div className="calendar-div">
                 <form onSubmit={handleReservation} style={{ padding: "20px" }}>
                   <div className="house-price">

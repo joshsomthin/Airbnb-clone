@@ -7,14 +7,31 @@
   margin-bottom: 40px;
 }
 
+.profile-pic {
+  grid-column-start: 2;
+  grid-row-start: 0;
+  grid-row-end: 1;
+}
+.calendar-div-container {
+  display: flex;
+  justify-content: flex-end;
+}
+.calendar-div {
+  border: 1px solid rgb(221, 221, 221);
+  border-radius: 12px;
+  max-width: 392px;
+  max-height: 392px;
+}
+
 .title {
   display: flex;
 }
 
 .images-container {
+  overflow-y: hidden;
+  border-radius: 12px;
   display: flex;
   max-height: 500px;
-  max-width: auto;
   flex-wrap: wrap;
   left: 0;
   right: 0;
@@ -25,28 +42,28 @@
   object-fit: cover;
 }
 
+.body-text {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  grid-row-start: 1;
+  grid-row-end: 3;
+}
+
 .house-info {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: 1fr;
 }
 
 .hosted-by {
-  display: flex;
-  justify-content: space-between;
-  width: 500px;
-  height: 500px;
+  display: grid;
+  grid-template-columns: 14fr 1fr;
+  grid-template-rows: 1fr;
 }
 
 .house-image img {
   height: 100%;
   width: 100%;
-}
-
-.calendar-div {
-  border: 1px solid rgb(184, 184, 184);
-  border-radius: 10%;
-  display: flex;
-  padding: 10px;
 }
 
 .house-price {
