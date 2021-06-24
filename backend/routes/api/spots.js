@@ -1,6 +1,7 @@
 const express = require("express");
 const asnycHandler = require("express-async-handler");
 const { check } = require("express-validator");
+const { createBookings } = require("../../utils/createbooking");
 
 const { handleValidationErrors } = require("../../utils/validation");
 const { setTokenCookie, requireAuth } = require("../../utils/auth");
@@ -57,12 +58,7 @@ router.get(
   asnycHandler(async (req, res) => {
     const { spotId } = req.params;
     const spot = await Spot.findByPk(spotId, {
-      include: [
-        { model: User },
-        { model: Booking },
-        { model: Image },
-        { model: Home },
-      ],
+      include: [{ model: User }, { model: Image }, { model: Home }],
     });
     if (spot) {
       return res.json(spot);
@@ -96,6 +92,27 @@ router.post(
       endDate,
     });
     return res.json({ booked });
+  })
+);
+
+router.get(
+  "/:spotId/bookings",
+  asnycHandler(async (req, res) => {
+    const { spotId } = req.params;
+    let bookings = [];
+    const booked = await Booking.findAll({
+      where: {
+        spotId: spotId,
+      },
+    });
+    booked.forEach((booking) => {
+      reserve = createBookings(
+        new Date(booking.startDate),
+        new Date(booking.endDate)
+      );
+      bookings = bookings.concat(reserve);
+    });
+    return res.json({ booked: bookings });
   })
 );
 

@@ -31,13 +31,3 @@ s .inputbox {
   font-size: 16px;
   color: rgb(15, 15, 15);
 }
-
-.submit-button {
-  margin-top: 10px;
-  width: 100%;
-  height: 40px;
-  background-color: rgb(230, 30, 77);
-  border: none;
-  color: white;
-  border-radius: 10px;
-}

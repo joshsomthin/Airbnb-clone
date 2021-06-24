@@ -1,5 +1,6 @@
 import { csrfFetch } from "./csrf";
 const GET_SPOTS = "spots/GET_SPOTS";
+const GET_RESERVATION = "spot/GET_RESERVATION";
 const POST_RESERVATION = "spots/reserveSpot";
 const GET_COMMENTS = "spots/GET_COMMENTS";
 
@@ -13,10 +14,23 @@ const reserveSpot = (dates) => ({
   dates,
 });
 
+const getReservations = (reservations) => ({
+  type: GET_RESERVATION,
+  reservations,
+});
+
 const getComments = (comments) => ({
   type: GET_COMMENTS,
   comments,
 });
+
+export const loadReservations = (spotId) => async (dispatch) => {
+  const response = await csrfFetch(`/api/spots/${spotId}/bookings`);
+  if (!response.ok) throw response;
+  const data = await response.json();
+  dispatch(getReservations(data.booked));
+  return data;
+};
 
 export const comments = (spotId) => async (dispatch) => {
   const response = await csrfFetch(`/api/comments/${spotId}`);
@@ -90,6 +104,10 @@ export const spotReducer = (state = initialState, action) => {
     case GET_COMMENTS:
       newState = Object.assign({}, state);
       newState.comments = action.comments;
+      return newState;
+    case GET_RESERVATION:
+      newState = Object.assign({}, state);
+      newState.bookings = action.reservations;
       return newState;
     default:
       return state;
