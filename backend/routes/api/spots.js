@@ -1,6 +1,7 @@
 const express = require("express");
 const asnycHandler = require("express-async-handler");
 const { check } = require("express-validator");
+const { createBookings } = require("../../utils/createbooking");
 
 const { handleValidationErrors } = require("../../utils/validation");
 const { setTokenCookie, requireAuth } = require("../../utils/auth");
@@ -99,10 +100,24 @@ router.post(
   })
 );
 
-router.post(
+router.get(
   "/:spotId/bookings",
   asnycHandler(async (req, res) => {
-    return res.json("hello");
+    const { spotId } = req.params;
+    let bookings = [];
+    const booked = await Booking.findAll({
+      where: {
+        spotId: spotId,
+      },
+    });
+    booked.forEach((booking) => {
+      reserve = createBookings(
+        new Date(booking.startDate),
+        new Date(booking.endDate)
+      );
+      bookings = bookings.concat(reserve);
+    });
+    return res.json({ booked: bookings });
   })
 );
 
