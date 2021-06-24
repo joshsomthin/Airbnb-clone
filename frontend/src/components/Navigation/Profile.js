@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useHistory } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import { logout } from "../../store/session";
 import { setModal } from "../../store/modal";
 import LoginFormModal from "../LoginFormModal";
@@ -55,11 +55,13 @@ const Profile = () => {
       {showMenu && sessionState ? (
         <div className="user-info">
           <div>{sessionState.username}</div>
-          <div>{sessionState.email}</div>
           <div>
-            <Link to="/logout" onClick={onLogoutClick}>
+            <NavLink to={`/account/${sessionState.id}`}>My Account</NavLink>
+          </div>
+          <div>
+            <NavLink to="/logout" onClick={onLogoutClick}>
               Logout
-            </Link>
+            </NavLink>
           </div>
         </div>
       ) : (

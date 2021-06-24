@@ -6,6 +6,7 @@ import Navigation from "./components/Navigation";
 import Home from "./components/Home";
 import Spot from "./components/Spot";
 import SpotIndex from "./components/SpotIndex";
+import AccountPage from "./components/AccountPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -28,6 +29,9 @@ function App() {
             </Route>
             <Route exact path="/search">
               <SpotIndex />
+            </Route>
+            <Route path="/account/:accountId">
+              <AccountPage />
             </Route>
           </Switch>
         </div>
