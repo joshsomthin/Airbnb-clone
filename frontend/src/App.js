@@ -6,7 +6,7 @@ import Navigation from "./components/Navigation";
 import Home from "./components/Home";
 import Spot from "./components/Spot";
 import SpotIndex from "./components/SpotIndex";
-import AccountPage from "./components/AccountPage";
+import Trips from "./components/Trips";
 
 function App() {
   const dispatch = useDispatch();
@@ -30,8 +30,8 @@ function App() {
             <Route exact path="/search">
               <SpotIndex />
             </Route>
-            <Route path="/account/:accountId">
-              <AccountPage />
+            <Route path="/trips/:accountId">
+              <Trips />
             </Route>
           </Switch>
         </div>

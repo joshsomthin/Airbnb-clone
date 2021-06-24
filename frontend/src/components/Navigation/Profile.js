@@ -56,7 +56,7 @@ const Profile = () => {
         <div className="user-info">
           <div>{sessionState.username}</div>
           <div>
-            <NavLink to={`/account/${sessionState.id}`}>My Account</NavLink>
+            <NavLink to={`/trips/${sessionState.id}`}>My Account</NavLink>
           </div>
           <div>
             <NavLink to="/logout" onClick={onLogoutClick}>
