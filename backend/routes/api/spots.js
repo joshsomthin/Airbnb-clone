@@ -58,12 +58,7 @@ router.get(
   asnycHandler(async (req, res) => {
     const { spotId } = req.params;
     const spot = await Spot.findByPk(spotId, {
-      include: [
-        { model: User },
-        { model: Booking },
-        { model: Image },
-        { model: Home },
-      ],
+      include: [{ model: User }, { model: Image }, { model: Home }],
     });
     if (spot) {
       return res.json(spot);
