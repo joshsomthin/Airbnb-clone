@@ -14,9 +14,9 @@ const ReservationCalendar = ({ spotId, price }) => {
   const [loginModal, setLoginModal] = useState(false);
   const [errors, setErrors] = useState([]);
   const sessionUser = useSelector((state) => state.session?.user);
-  const bookings = useSelector((state) => state.spot?.bookings);
+  const bookings = useSelector((state) => state.spots?.bookings);
 
-  const handleReservation = (e) => {
+  const handleReservation = async (e) => {
     e.preventDefault();
     if (!sessionUser) {
       setLoginModal(true);
@@ -36,31 +36,36 @@ const ReservationCalendar = ({ spotId, price }) => {
           startDate: calendar[0],
           endDate: calendar[1],
         })
-      ).catch(async (res) => {
-        const data = await res.json();
+      )
+        .catch(async (res) => {
+          const data = await res.json();
 
-        if (data && data.errors) setErrors(data.errors);
-      });
+          if (data && data.errors) setErrors(data.errors);
+        })
+        .then(() => dispatch(loadReservations(spotId)));
     }
   };
 
+  const disableTiles = ({ date, view }) => {
+    return bookings
+      ? view === "month" && // Block day tiles only
+          bookings.some((disabledDate) => {
+            let removeDate = new Date(disabledDate);
+            return (
+              date.getFullYear() === removeDate.getFullYear() &&
+              date.getMonth() === removeDate.getMonth() &&
+              date.getDate() === removeDate.getDate()
+            );
+          })
+      : false;
+  };
   useEffect(() => {
-    dispatch(loadReservations(spotId))
-      .then(() => console.log(bookings))
-      .then(() => setIsLoaded(true));
+    dispatch(loadReservations(spotId)).then(() => setIsLoaded(true));
   }, []);
 
-  // const disableTiles = ({ date, view }) => {
-  //   return (
-  //     view === "month" && // Block day tiles only
-  //     bookings.some(
-  //       (disabledDate) =>
-  //         date.getFullYear() === disabledDate.getFullYear() &&
-  //         date.getMonth() === disabledDate.getMonth() &&
-  //         date.getDate() === disabledDate.getDate()
-  //     )
-  //   );
-  // };
+  // const canDisableTiles = () => {
+
+  // }
 
   return (
     isLoaded && (
@@ -73,7 +78,7 @@ const ReservationCalendar = ({ spotId, price }) => {
             </div>
             <Calendar
               style={{ position: "sticky" }}
-              // tileDisabled={disableTiles}
+              tileDisabled={disableTiles}
               value={calendar}
               onChange={setCalendar}
               selectRange={true}
